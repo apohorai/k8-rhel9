@@ -73,4 +73,7 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-ngin>
+
+
+ssh -i ~/.ssh/id_ed25519 -N -R 8888:localhost:32232 attila_pohorai@35.208.94.224 &
   
