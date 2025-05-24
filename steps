@@ -75,5 +75,44 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-ngin>
 
 
-ssh -i ~/.ssh/id_ed25519 -N -R 8888:localhost:32232 attila_pohorai@35.208.94.224 &
-  
+[apohorai@pohakubemaster ~]$ cat nginx-deployment.yaml 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+
+[apohorai@pohakubemaster ~]$ cat nginx-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+
+autossh -M 0 -f -N \
+  -i ~/.ssh/id_ed25519 \
+  -R 8888:192.168.100.100:30214 \
+  attila_pohorai@35.208.94.224
