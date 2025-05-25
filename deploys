@@ -1,0 +1,9 @@
+kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+kubectl get storageclass
+kubectl apply -f postgres-deployment.yaml
+kubectl get pvc
+kubectl get pods
+kubectl describe pvc postgres-pvc
+kubectl run psql-client --rm -it --image=postgres:latest --restart=Never -- bash
+psql -h postgres-service -U apohorai -d pohadb
