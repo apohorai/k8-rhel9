@@ -1,0 +1,1464 @@
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Docker CE Stable - x86_64                                                                                                                                                               23 kB/s | 3.5 kB     00:00    
+Kubernetes                                                                                                                                                                             4.5 kB/s | 1.7 kB     00:00    
+No match for argument: httpd-tools
+Error: Unable to find a match: httpd-tools
+[apohorai@pohakubemaster Packages]$ sudo dnf install httpd-tools^C
+[apohorai@pohakubemaster Packages]$ sudo yum install httpd-tools
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Last metadata expiration check: 0:00:27 ago on Mon 16 Jun 2025 09:08:03 PM EDT.
+No match for argument: httpd-tools
+Error: Unable to find a match: httpd-tools
+[apohorai@pohakubemaster Packages]$ pwd
+/mnt/cd/AppStream/Packages
+[apohorai@pohakubemaster Packages]$ mount
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime,seclabel)
+devtmpfs on /dev type devtmpfs (rw,nosuid,seclabel,size=4096k,nr_inodes=461344,mode=755,inode64)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,seclabel,inode64)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,seclabel,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,seclabel,size=747456k,nr_inodes=819200,mode=755,inode64)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,seclabel)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime,seclabel)
+efivarfs on /sys/firmware/efi/efivars type efivarfs (rw,nosuid,nodev,noexec,relatime)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+/dev/mapper/rhel-root on / type xfs (rw,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,nosuid,noexec,relatime)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=29,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=16044)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime,seclabel)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,seclabel,pagesize=2M)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime,seclabel)
+tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime,seclabel)
+configfs on /sys/kernel/config type configfs (rw,nosuid,nodev,noexec,relatime)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+none on /run/credentials/systemd-tmpfiles-setup-dev.service type ramfs (ro,nosuid,nodev,noexec,relatime,seclabel,mode=700)
+none on /run/credentials/systemd-sysctl.service type ramfs (ro,nosuid,nodev,noexec,relatime,seclabel,mode=700)
+/dev/sda2 on /boot type xfs (rw,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/sda1 on /boot/efi type vfat (rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro)
+none on /run/credentials/systemd-tmpfiles-setup.service type ramfs (ro,nosuid,nodev,noexec,relatime,seclabel,mode=700)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/d37f4716347fa1c078693af6c2a646ea2d373ea44747ff10ecbc0907521cbd97/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/11526ee66a86c4ca4f290fe6382d5c5d95c1891889cae988d36f2c2ff49f5551/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/c131b0b08004e684a24e6e401275efd308a5ee429d63d828cd702451bf2185ad/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/34ec35721b391183efd6048450b0dd48351d530fe7522d353ee6633e132f7d24/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/11526ee66a86c4ca4f290fe6382d5c5d95c1891889cae988d36f2c2ff49f5551/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1582/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1582/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/c131b0b08004e684a24e6e401275efd308a5ee429d63d828cd702451bf2185ad/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1583/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1583/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/34ec35721b391183efd6048450b0dd48351d530fe7522d353ee6633e132f7d24/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1584/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1584/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/d37f4716347fa1c078693af6c2a646ea2d373ea44747ff10ecbc0907521cbd97/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1581/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1581/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/aa4e3fe799ea64d7d3da2b8694f1950c7e99d9a4717fbc574554d0be321e2ace/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/15/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/12/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/11/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/10/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/9/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/8/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/7/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/5/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/4/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/3/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/2/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1585/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1585/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/674da210c66425078186930282dba4c1bf0f45e2cc82b03adf7a1c032a5b278b/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/13/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/12/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/11/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/10/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/9/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/8/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/7/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/5/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/4/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/3/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/2/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1586/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1586/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/c34dd410e62e7119d0b0ddfc0f833b923a791e947ca4faae430f22f3fbcebda5/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/14/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/12/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/11/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/10/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/9/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/8/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/7/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/5/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/4/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/3/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/2/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1587/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1587/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/f542a8384513124702ba293af838bd9e9a4c035e2f3bab7168eb7188b55b9814/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/34/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/33/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/32/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/11/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/10/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/9/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/8/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/7/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/5/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/4/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/3/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/2/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1588/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1588/work)
+tmpfs on /var/lib/kubelet/pods/bac631ab-ac3c-4bd4-84a4-79a533b2e97f/volumes/kubernetes.io~projected/kube-api-access-8qq8h type tmpfs (rw,relatime,seclabel,size=174080k,inode64)
+tmpfs on /var/lib/kubelet/pods/acdaf148-273e-4579-9474-d90be7b2ccfa/volumes/kubernetes.io~projected/kube-api-access-b7mps type tmpfs (rw,relatime,seclabel,size=3634876k,inode64)
+tmpfs on /var/lib/kubelet/pods/ec07c19c-94a7-416a-8462-09e36d366884/volumes/kubernetes.io~projected/kube-api-access-psknt type tmpfs (rw,relatime,seclabel,size=174080k,inode64)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/3084d0444e65772a8e955c03d431e68d92e0d20d737c720f3e3c35e73a5c0c83/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/3084d0444e65772a8e955c03d431e68d92e0d20d737c720f3e3c35e73a5c0c83/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1589/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1589/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/0b6ea9a8d7ed42f1782300b6c105c8b47de31f9bd891fad1c0acf2c111874aa4/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/17/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/16/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1591/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1591/work)
+none on /run/calico/cgroup type cgroup2 (rw,relatime,seclabel)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/20355e1b57f2808cbb3a574fa23c141fdcd873decdb9a4a9a729a51bb4412410/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+nsfs on /run/netns/cni-96847cf8-0632-eac6-db42-468298ce290d type nsfs (rw)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/3fb7988744446731b93546a65a86b0474a1fbd89501e7b936b07cb9dd931cd38/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+nsfs on /run/netns/cni-ce2b93d2-87a6-f4b6-81fa-ff4d4e43ca26 type nsfs (rw)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/3fb7988744446731b93546a65a86b0474a1fbd89501e7b936b07cb9dd931cd38/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1598/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1598/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/20355e1b57f2808cbb3a574fa23c141fdcd873decdb9a4a9a729a51bb4412410/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1597/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1597/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/dddd1e6bc8816e7b3c1495b7b5437bcbd6a4efed036097af1eb00efc1db4ebb2/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/30/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/29/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/28/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/27/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/26/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/25/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/23/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/22/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/21/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/20/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/19/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/18/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1599/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1599/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/1419e60c1fb4c9007be0b9ff8156ede947c8f4181b3ab12b2a32e0e4e6e2675d/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/30/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/29/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/28/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/27/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/26/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/25/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/23/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/22/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/21/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/20/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/19/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/18/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1600/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1600/work)
+tmpfs on /var/lib/kubelet/pods/8fd232a8-1cf1-479e-844c-e6fd69ae7c3c/volumes/kubernetes.io~projected/kube-api-access-d7scj type tmpfs (rw,relatime,seclabel,size=3634876k,inode64)
+tmpfs on /var/lib/kubelet/pods/8301c788-5816-4ccb-9c5a-41c6b93e94e0/volumes/kubernetes.io~projected/kube-api-access-zzg25 type tmpfs (rw,relatime,seclabel,size=3634876k,inode64)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/b8c6912d0b761ff8aa91948e779ece77034aedfce5c2373e1e80ec66426c301f/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/b8c6912d0b761ff8aa91948e779ece77034aedfce5c2373e1e80ec66426c301f/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1623/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1623/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/893e515496cd5af5e68e4c7158d5749eb3534ed12f0db476b6daf4f83b182915/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/109/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/74/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1630/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1630/work)
+shm on /run/containerd/io.containerd.grpc.v1.cri/sandboxes/e7d591cca1654c21c9864be7ae89273549a603bd4d6d90fc04db6ad56ae1074a/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,seclabel,size=65536k,inode64)
+nsfs on /run/netns/cni-a8b940f9-a8c9-cc8e-a6e1-80a112bd7a05 type nsfs (rw)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/e7d591cca1654c21c9864be7ae89273549a603bd4d6d90fc04db6ad56ae1074a/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/31/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1631/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1631/work)
+overlay on /run/containerd/io.containerd.runtime.v2.task/k8s.io/6ed5cd23794cec82fd537a696271c14a44ab30ec15a1ccded9da821ffac931c3/rootfs type overlay (rw,relatime,seclabel,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/151/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/150/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/149/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/148/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/147/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/146/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/145/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/144/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/143/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/142/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/141/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/140/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/139/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1632/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1632/work)
+tmpfs on /run/user/1000 type tmpfs (rw,nosuid,nodev,relatime,seclabel,size=373724k,nr_inodes=93431,mode=700,uid=1000,gid=1000,inode64)
+/dev/sr0 on /mnt/cd type iso9660 (ro,relatime,nojoliet,check=s,map=n,blocksize=2048)
+[apohorai@pohakubemaster Packages]$ sudo vim /etc/yum.repos.d/rhel-dvd.repo
+[sudo] password for apohorai: 
+[apohorai@pohakubemaster Packages]$ repo
+[sudo] password for apohorai: 
+-bash: repo: command not found
+-bash: [sudo]: command not found
+[apohorai@pohakubemaster Packages]$ sudo dnf clean all
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+12 files removed
+[apohorai@pohakubemaster Packages]$ sudo dnf install httpd-tools
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Docker CE Stable - x86_64                                                                                                                                                              192 kB/s |  37 kB     00:00    
+Kubernetes                                                                                                                                                                              10 kB/s | 7.8 kB     00:00    
+RHEL DVD                                                                                                                                                                               0.0  B/s |   0  B     00:00    
+Errors during downloading metadata for repository 'rhel-dvd':
+  - Curl error (37): Couldn't read a file:// file for file:///mnt/cd/repodata/repomd.xml [Couldn't open file /mnt/cd/repodata/repomd.xml]
+Error: Failed to download metadata for repo 'rhel-dvd': Cannot download repomd.xml: Cannot download repodata/repomd.xml: All mirrors were tried
+[apohorai@pohakubemaster Packages]$ ls /mnt/cd/
+AppStream  BaseOS  EFI  EULA  extra_files.json  GPL  images  isolinux  media.repo  RPM-GPG-KEY-redhat-beta  RPM-GPG-KEY-redhat-release
+[apohorai@pohakubemaster Packages]$ cd /mnt/cd/
+[apohorai@pohakubemaster cd]$ ls
+AppStream  BaseOS  EFI  EULA  extra_files.json  GPL  images  isolinux  media.repo  RPM-GPG-KEY-redhat-beta  RPM-GPG-KEY-redhat-release
+[apohorai@pohakubemaster cd]$ cd AppStream/
+[apohorai@pohakubemaster AppStream]$ ls
+Packages  repodata
+[apohorai@pohakubemaster AppStream]$ ls pr*^C
+[apohorai@pohakubemaster AppStream]$ sudo vim /etc/yum.repos.d/rhel-dvd.repo
+[apohorai@pohakubemaster AppStream]$ sudo vim /etc/yum.repos.d/rhel-dvd.repo
+[apohorai@pohakubemaster AppStream]$ sudo dnf clean all
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+12 files removed
+[apohorai@pohakubemaster AppStream]$ sudo dnf install httpd-tools
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Docker CE Stable - x86_64                                                                                                                                                              149 kB/s |  37 kB     00:00    
+Kubernetes                                                                                                                                                                             9.7 kB/s | 7.8 kB     00:00    
+RHEL DVD                                                                                                                                                                                37 MB/s | 7.7 MB     00:00    
+Dependencies resolved.
+=======================================================================================================================================================================================================================
+ Package                                                  Architecture                                   Version                                                Repository                                        Size
+=======================================================================================================================================================================================================================
+Installing:
+ httpd-tools                                              x86_64                                         2.4.62-4.el9                                           rhel-dvd                                          86 k
+Installing dependencies:
+ apr                                                      x86_64                                         1.7.0-12.el9_3                                         rhel-dvd                                         126 k
+ apr-util                                                 x86_64                                         1.6.1-23.el9                                           rhel-dvd                                          97 k
+ apr-util-bdb                                             x86_64                                         1.6.1-23.el9                                           rhel-dvd                                          14 k
+Installing weak dependencies:
+ apr-util-openssl                                         x86_64                                         1.6.1-23.el9                                           rhel-dvd                                          17 k
+
+Transaction Summary
+=======================================================================================================================================================================================================================
+Install  5 Packages
+
+Total size: 340 k
+Installed size: 737 k
+Is this ok [y/N]: y
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                                                               1/1 
+  Installing       : apr-1.7.0-12.el9_3.x86_64                                                                                                                                                                     1/5 
+  Installing       : apr-util-bdb-1.6.1-23.el9.x86_64                                                                                                                                                              2/5 
+  Installing       : apr-util-openssl-1.6.1-23.el9.x86_64                                                                                                                                                          3/5 
+  Installing       : apr-util-1.6.1-23.el9.x86_64                                                                                                                                                                  4/5 
+  Installing       : httpd-tools-2.4.62-4.el9.x86_64                                                                                                                                                               5/5 
+  Running scriptlet: httpd-tools-2.4.62-4.el9.x86_64                                                                                                                                                               5/5 
+  Verifying        : apr-1.7.0-12.el9_3.x86_64                                                                                                                                                                     1/5 
+  Verifying        : apr-util-1.6.1-23.el9.x86_64                                                                                                                                                                  2/5 
+  Verifying        : apr-util-bdb-1.6.1-23.el9.x86_64                                                                                                                                                              3/5 
+  Verifying        : apr-util-openssl-1.6.1-23.el9.x86_64                                                                                                                                                          4/5 
+  Verifying        : httpd-tools-2.4.62-4.el9.x86_64                                                                                                                                                               5/5 
+Installed products updated.
+
+Installed:
+  apr-1.7.0-12.el9_3.x86_64            apr-util-1.6.1-23.el9.x86_64            apr-util-bdb-1.6.1-23.el9.x86_64            apr-util-openssl-1.6.1-23.el9.x86_64            httpd-tools-2.4.62-4.el9.x86_64           
+
+Complete!
+[apohorai@pohakubemaster AppStream]$ htpasswd ^C
+[apohorai@pohakubemaster AppStream]$ ls -la /data
+ls: cannot access '/data': No such file or directory
+[apohorai@pohakubemaster AppStream]$ cd
+[apohorai@pohakubemaster ~]$ htpasswd -cB .htpasswd apohorai
+New password: 
+Re-type new password: 
+Adding password for user apohorai
+[apohorai@pohakubemaster ~]$ cat .htpasswd 
+apohorai:$2y$05$nj0HZ13yCqMF24549EMOUu9cZHC3AYomtacudmXKkGbmF0XEBYqeW
+[apohorai@pohakubemaster ~]$ pwd
+/home/apohorai
+[apohorai@pohakubemaster ~]$ kubectl -n registry create secret generic registry-auth --from-file=htpasswd=./.htpasswd
+error: failed to create secret namespaces "registry" not found
+[apohorai@pohakubemaster ~]$ kubectl create secret generic registry-auth --from-file=htpasswd=./.htpasswd
+secret/registry-auth created
+[apohorai@pohakubemaster ~]$ vim docker-registry-auth.yaml
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registry-auth.yaml
+deployment.apps/registry configured
+service/registry-service created
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running   0          4d15h
+docker-registry-6d9ccf685-bs5fv    1/1     Running   0          37m
+postgres-697b74b7b9-q6scq          1/1     Running   0          7d19h
+registry-69c8fb9645-s6rvz          1/1     Running   0          19s
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running   0          18h
+teamcity-server-87d649c7b-p59m6    1/1     Running   0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running   0          7d21h
+[apohorai@pohakubemaster ~]$ kubectl get svc
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+auth-app-service   NodePort    10.109.69.82     <none>        5000:30080/TCP   7d18h
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          15d
+postgres-service   NodePort    10.97.161.145    <none>        5432:30032/TCP   7d19h
+registry           ClusterIP   10.106.96.102    <none>        5000/TCP         37m
+registry-service   NodePort    10.101.128.245   <none>        5000:32000/TCP   44s
+teamcity-service   NodePort    10.110.135.243   <none>        8111:30081/TCP   7d17h
+vtam-service       NodePort    10.100.7.72      <none>        80:30214/TCP     7d21h
+[apohorai@pohakubemaster ~]$ docker login 192.168.100.100:32000 -u apohorai
+Password: 
+time="2025-06-16T21:43:13-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32000 false false false 0xc00046a1c0}" error="Get \"https://192.168.100.100:32000/v2/\": http: server gave HTTP response to HTTPS client"
+Get "https://192.168.100.100:32000/v2/": http: server gave HTTP response to HTTPS client
+[apohorai@pohakubemaster ~]$ openssl req -newkey rsa:4096 -nodes -sha256 -keyout domain.key -x509 -days 365 -out domain.crt -subj "/CN=registry.example.com"
+......+......+...+..........+...........+....+...+++++++++++++++++++++++++++++++++++++++++++++*......+............+.+.....+.+.....+.+...............+++++++++++++++++++++++++++++++++++++++++++++*.......+.+.........+........+.....................+....+.....................+..+..........+........+......+...............+......+.......+..+...................+..+.......+......+..............+......+.+......+..+...+............................+......+...........+............+......+....+.....+.......+....................+.+............+........+...+.........+.+......+.....+.............+.....+.+++++
+........+.+..+...+....+...+...+.....+...+.+.....+....+...............+++++++++++++++++++++++++++++++++++++++++++++*...+....+.....+..........+.....+...+..........+........+.+++++++++++++++++++++++++++++++++++++++++++++*.+..........+....................+....+..............+....+...+...+.....+.......+..+.+...........+.........................+.....+.+..+.......+...............+........+.............+...+..+............+...............+.........................+..+....+...........+...+......+....+...............+..+.+.....+...+.........+.+......+...+..+...+......+....+..........................+.+......+........+.+...+.....+...+..................+..........+...........+..................+.+......+...+..+.........+.+......+.....+..................+.+...+..+.........+.........+...+.........+...+...+...+....+......+......+.....+....+.....+................+......+.....+...+....+..+....+.................+....+........+...+....+......+..+...+.......+..+....+...............+......+...+............+......+.....+...+......+......+.............+......+......+.....+..........+..+............+...+.+.....+......+......+.........+.+.....+.......+............+..............+.+...........+..........+..+.+..............+.......+...+........+...+.+...+...........+.......+.................+...+..........+.....+...........................+.+.....+.+...............+.....................+...+.........+......+....................+....+..+................+.........+........+................+..........................+....+......+...+...+...+......+..............+.+......+........+.+........+...+.........+.........+....+..+.............+..+..........+...+......+...........................+...+..+...................+..............+......+..................+.+..+++++
+-----
+[apohorai@pohakubemaster ~]$ ls -la certs
+total 12
+drwxr-xr-x.  2 apohorai apohorai   42 Jun 15 21:20 .
+drwx------. 12 apohorai apohorai 4096 Jun 16 21:51 ..
+-rw-r--r--.  1 apohorai apohorai 1822 Jun 15 21:15 domain.crt
+-rw-------.  1 apohorai apohorai 3268 Jun 15 21:15 domain.key
+[apohorai@pohakubemaster ~]$ ls -la
+total 240
+drwx------. 12 apohorai apohorai  4096 Jun 16 21:51 .
+drwxr-xr-x.  3 root     root        22 May 17 23:49 ..
+-rw-r--r--.  1 apohorai apohorai  1162 Jun 10 06:29 auth-app-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   183 Jun  9 03:13 auth-app-service.yaml
+-rw-r--r--.  1 apohorai apohorai   279 May 26 22:40 auth-secrets.yaml
+-rw-------.  1 apohorai apohorai 31428 Jun 16 19:59 .bash_history
+-rw-r--r--.  1 apohorai apohorai    18 Feb 15  2024 .bash_logout
+-rw-r--r--.  1 apohorai apohorai   141 Feb 15  2024 .bash_profile
+-rw-r--r--.  1 apohorai apohorai   492 Feb 15  2024 .bashrc
+drwxr-xr-x.  4 apohorai apohorai    29 May 24 19:51 .cache
+drwxr-xr-x.  2 apohorai apohorai    42 Jun 15 21:20 certs
+drwx------.  3 apohorai apohorai    20 May 17 23:53 .config
+-rw-r--r--.  1 apohorai apohorai   161 Jun 15 21:50 configmap.yaml
+-rwxrwxrwx.  1 apohorai apohorai    82 Jun  9 00:49 create_secrets.sh
+drwx------.  3 apohorai apohorai    39 May 24 20:18 .docker
+-rw-r--r--.  1 apohorai apohorai  1170 Jun 16 21:40 docker-registry-auth.yaml
+-rw-r--r--.  1 apohorai apohorai   778 Jun 16 03:11 docker-registry-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   571 Jun 14 02:10 docker-registry-deployment.yaml.yaml
+-rw-r--r--.  1 apohorai apohorai   162 Jun 14 02:10 docker-registry-pvc.yaml
+-rw-r--r--.  1 apohorai apohorai   220 Jun 14 02:10 docker-registry-pv.yaml
+-rw-r--r--.  1 apohorai apohorai   195 Jun 14 02:13 docker-registry-service.yaml
+-rw-r--r--.  1 apohorai apohorai   234 Jun 15 21:16 docker_secrets
+-rw-r--r--.  1 apohorai apohorai  1838 Jun 16 21:51 domain.crt
+-rw-------.  1 apohorai apohorai  3268 Jun 16 21:51 domain.key
+-rw-r--r--.  1 apohorai apohorai  1170 May 28 23:25 flask-app-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   645 May 26 18:46 flask-app-deployment.yaml.bck
+-rw-r--r--.  1 apohorai apohorai   181 May 24 20:22 flask-app-service.yaml
+drwxr-xr-x.  8 apohorai apohorai   166 Jun  9 03:25 .git
+drwxr-xr-x.  5 apohorai apohorai    52 May 28 04:25 .gitclones
+-rw-r--r--.  1 apohorai apohorai    93 May 27 00:13 .gitconfig
+-rw-------.  1 apohorai apohorai    87 Jun  9 03:26 .git-credentials
+-rw-r--r--.  1 apohorai apohorai    70 Jun 16 21:29 .htpasswd
+drwxr-xr-x.  3 apohorai apohorai    33 Jun  1 03:33 .kube
+-rw-------.  1 apohorai apohorai    20 Jun  5 07:38 .lesshst
+drwxr-xr-x.  3 apohorai apohorai    37 Jun 16 06:18 llama.cpp
+-rw-r--r--.  1 apohorai apohorai   557 Jun 16 07:43 llama-cpp-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   191 Jun 16 07:44 llama-cpp-service.yaml
+drwxr-xr-x.  4 apohorai apohorai    88 May 25 02:05 myapp
+-rw-r--r--.  1 apohorai apohorai   888 May 26 05:57 ney
+-rw-r--r--.  1 apohorai apohorai   367 May 23 21:42 nginx-ingress.yaml
+-rw-r--r--.  1 apohorai apohorai   989 Jun  9 02:28 postgres-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   161 Jun  9 00:41 postgres-pvc.yaml
+-rw-r--r--.  1 apohorai apohorai   205 Jun  9 00:45 postgres-pv.yaml
+-rw-r--r--.  1 apohorai apohorai   281 Jun  9 00:50 postgres-secret.yaml
+-rw-r--r--.  1 apohorai apohorai   192 Jun  9 02:30 postgres-service.yaml
+-rw-------.  1 apohorai apohorai     0 May 23 00:21 .python_history
+-rw-r--r--.  1 apohorai apohorai    22 Jun  9 00:22 README.md
+-rw-r--r--.  1 apohorai apohorai  1026 Jun 16 21:03 registry.yaml
+-rw-r--r--.  1 apohorai apohorai  7208 Jun  9 05:47 server.xml
+drwx------.  2 apohorai apohorai    88 Jun 12 03:52 .ssh
+-rw-r--r--.  1 apohorai apohorai  1100 Jun 16 03:10 teamcity-agent.yaml
+-rw-r--r--.  1 apohorai apohorai  7924 Jun  9 05:48 teamcity-configmap.yaml
+-rw-r--r--.  1 apohorai apohorai  1154 Jun 10 00:28 teamcity-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai  1223 Jun  9 23:18 teamcity-deployment.yaml.bck
+-rw-r--r--.  1 apohorai apohorai   195 Jun  9 03:44 teamcity-pvc.yaml
+-rw-r--r--.  1 apohorai apohorai   244 Jun  9 18:12 teamcity-pv.yaml
+-rw-r--r--.  1 apohorai apohorai   228 Jun  9 03:46 teamcity-service.yaml
+-rw-------.  1 apohorai apohorai 13318 Jun 16 21:40 .viminfo
+-rw-r--r--.  1 apohorai apohorai   345 Jun  9 00:07 vtam-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   196 Jun  9 00:12 vtam-service.yaml
+[apohorai@pohakubemaster ~]$ ls -latr
+total 240
+-rw-r--r--.  1 apohorai apohorai   492 Feb 15  2024 .bashrc
+-rw-r--r--.  1 apohorai apohorai   141 Feb 15  2024 .bash_profile
+-rw-r--r--.  1 apohorai apohorai    18 Feb 15  2024 .bash_logout
+drwxr-xr-x.  3 root     root        22 May 17 23:49 ..
+drwx------.  3 apohorai apohorai    20 May 17 23:53 .config
+-rw-------.  1 apohorai apohorai     0 May 23 00:21 .python_history
+-rw-r--r--.  1 apohorai apohorai   367 May 23 21:42 nginx-ingress.yaml
+drwxr-xr-x.  4 apohorai apohorai    29 May 24 19:51 .cache
+drwx------.  3 apohorai apohorai    39 May 24 20:18 .docker
+-rw-r--r--.  1 apohorai apohorai   181 May 24 20:22 flask-app-service.yaml
+drwxr-xr-x.  4 apohorai apohorai    88 May 25 02:05 myapp
+-rw-r--r--.  1 apohorai apohorai   888 May 26 05:57 ney
+-rw-r--r--.  1 apohorai apohorai   645 May 26 18:46 flask-app-deployment.yaml.bck
+-rw-r--r--.  1 apohorai apohorai   279 May 26 22:40 auth-secrets.yaml
+-rw-r--r--.  1 apohorai apohorai    93 May 27 00:13 .gitconfig
+drwxr-xr-x.  5 apohorai apohorai    52 May 28 04:25 .gitclones
+-rw-r--r--.  1 apohorai apohorai  1170 May 28 23:25 flask-app-deployment.yaml
+drwxr-xr-x.  3 apohorai apohorai    33 Jun  1 03:33 .kube
+-rw-------.  1 apohorai apohorai    20 Jun  5 07:38 .lesshst
+-rw-r--r--.  1 apohorai apohorai   345 Jun  9 00:07 vtam-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   196 Jun  9 00:12 vtam-service.yaml
+-rw-r--r--.  1 apohorai apohorai    22 Jun  9 00:22 README.md
+-rw-r--r--.  1 apohorai apohorai   161 Jun  9 00:41 postgres-pvc.yaml
+-rw-r--r--.  1 apohorai apohorai   205 Jun  9 00:45 postgres-pv.yaml
+-rwxrwxrwx.  1 apohorai apohorai    82 Jun  9 00:49 create_secrets.sh
+-rw-r--r--.  1 apohorai apohorai   281 Jun  9 00:50 postgres-secret.yaml
+-rw-r--r--.  1 apohorai apohorai   989 Jun  9 02:28 postgres-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   192 Jun  9 02:30 postgres-service.yaml
+-rw-r--r--.  1 apohorai apohorai   183 Jun  9 03:13 auth-app-service.yaml
+drwxr-xr-x.  8 apohorai apohorai   166 Jun  9 03:25 .git
+-rw-------.  1 apohorai apohorai    87 Jun  9 03:26 .git-credentials
+-rw-r--r--.  1 apohorai apohorai   195 Jun  9 03:44 teamcity-pvc.yaml
+-rw-r--r--.  1 apohorai apohorai   228 Jun  9 03:46 teamcity-service.yaml
+-rw-r--r--.  1 apohorai apohorai  7208 Jun  9 05:47 server.xml
+-rw-r--r--.  1 apohorai apohorai  7924 Jun  9 05:48 teamcity-configmap.yaml
+-rw-r--r--.  1 apohorai apohorai   244 Jun  9 18:12 teamcity-pv.yaml
+-rw-r--r--.  1 apohorai apohorai  1223 Jun  9 23:18 teamcity-deployment.yaml.bck
+-rw-r--r--.  1 apohorai apohorai  1154 Jun 10 00:28 teamcity-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai  1162 Jun 10 06:29 auth-app-deployment.yaml
+drwx------.  2 apohorai apohorai    88 Jun 12 03:52 .ssh
+-rw-r--r--.  1 apohorai apohorai   220 Jun 14 02:10 docker-registry-pv.yaml
+-rw-r--r--.  1 apohorai apohorai   162 Jun 14 02:10 docker-registry-pvc.yaml
+-rw-r--r--.  1 apohorai apohorai   571 Jun 14 02:10 docker-registry-deployment.yaml.yaml
+-rw-r--r--.  1 apohorai apohorai   195 Jun 14 02:13 docker-registry-service.yaml
+-rw-r--r--.  1 apohorai apohorai   234 Jun 15 21:16 docker_secrets
+drwxr-xr-x.  2 apohorai apohorai    42 Jun 15 21:20 certs
+-rw-r--r--.  1 apohorai apohorai   161 Jun 15 21:50 configmap.yaml
+-rw-r--r--.  1 apohorai apohorai  1100 Jun 16 03:10 teamcity-agent.yaml
+-rw-r--r--.  1 apohorai apohorai   778 Jun 16 03:11 docker-registry-deployment.yaml
+drwxr-xr-x.  3 apohorai apohorai    37 Jun 16 06:18 llama.cpp
+-rw-r--r--.  1 apohorai apohorai   557 Jun 16 07:43 llama-cpp-deployment.yaml
+-rw-r--r--.  1 apohorai apohorai   191 Jun 16 07:44 llama-cpp-service.yaml
+-rw-------.  1 apohorai apohorai 31428 Jun 16 19:59 .bash_history
+-rw-r--r--.  1 apohorai apohorai  1026 Jun 16 21:03 registry.yaml
+-rw-r--r--.  1 apohorai apohorai    70 Jun 16 21:29 .htpasswd
+-rw-r--r--.  1 apohorai apohorai  1170 Jun 16 21:40 docker-registry-auth.yaml
+-rw-------.  1 apohorai apohorai 13318 Jun 16 21:40 .viminfo
+-rw-------.  1 apohorai apohorai  3268 Jun 16 21:51 domain.key
+-rw-r--r--.  1 apohorai apohorai  1838 Jun 16 21:51 domain.crt
+drwx------. 12 apohorai apohorai  4096 Jun 16 21:51 .
+[apohorai@pohakubemaster ~]$ kubectl create secret tls registry-tls --cert=domain.crt --key=domain.key
+error: failed to create secret secrets "registry-tls" already exists
+[apohorai@pohakubemaster ~]$ kubeclt get secrets
+-bash: kubeclt: command not found
+[apohorai@pohakubemaster ~]$ kubectl get secrets
+NAME                 TYPE                DATA   AGE
+flask-auth-secrets   Opaque              3      7d19h
+postgres-secret      Opaque              3      7d21h
+registry-auth        Opaque              1      14m
+registry-tls         kubernetes.io/tls   2      24h
+[apohorai@pohakubemaster ~]$ kubectl delete secret registry-tls
+secret "registry-tls" deleted
+[apohorai@pohakubemaster ~]$ kubectl create secret tls registry-tls --cert=domain.crt --key=domain.key
+secret/registry-tls created
+[apohorai@pohakubemaster ~]$ vim docker-registry-auth.yaml 
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registry-auth.yaml
+deployment.apps/registry configured
+service/registry configured
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running   0          4d15h
+docker-registry-6d9ccf685-bs5fv    1/1     Running   0          51m
+postgres-697b74b7b9-q6scq          1/1     Running   0          7d19h
+registry-789576fd95-mkgz7          1/1     Running   0          6s
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running   0          18h
+teamcity-server-87d649c7b-p59m6    1/1     Running   0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running   0          7d21h
+[apohorai@pohakubemaster ~]$ kubectl get svc
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+auth-app-service   NodePort    10.109.69.82     <none>        5000:30080/TCP   7d18h
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          15d
+postgres-service   NodePort    10.97.161.145    <none>        5432:30032/TCP   7d19h
+registry           NodePort    10.106.96.102    <none>        443:32443/TCP    50m
+registry-service   NodePort    10.101.128.245   <none>        5000:32000/TCP   13m
+teamcity-service   NodePort    10.110.135.243   <none>        8111:30081/TCP   7d18h
+vtam-service       NodePort    10.100.7.72      <none>        80:30214/TCP     7d21h
+[apohorai@pohakubemaster ~]$ kubectl delete svc registry
+service "registry" deleted
+[apohorai@pohakubemaster ~]$ kubectl delete svc registry-service
+service "registry-service" deleted
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registry-auth.yaml
+deployment.apps/registry unchanged
+service/registry created
+[apohorai@pohakubemaster ~]$ kubectl get svc
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+auth-app-service   NodePort    10.109.69.82     <none>        5000:30080/TCP   7d18h
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          15d
+postgres-service   NodePort    10.97.161.145    <none>        5432:30032/TCP   7d19h
+registry           NodePort    10.101.225.123   <none>        443:32443/TCP    5s
+teamcity-service   NodePort    10.110.135.243   <none>        8111:30081/TCP   7d18h
+vtam-service       NodePort    10.100.7.72      <none>        80:30214/TCP     7d21h
+[apohorai@pohakubemaster ~]$ ls
+auth-app-deployment.yaml  docker-registry-auth.yaml             docker_secrets                 llama.cpp                  postgres-deployment.yaml  registry.yaml                 teamcity-pvc.yaml
+auth-app-service.yaml     docker-registry-deployment.yaml       domain.crt                     llama-cpp-deployment.yaml  postgres-pvc.yaml         server.xml                    teamcity-pv.yaml
+auth-secrets.yaml         docker-registry-deployment.yaml.yaml  domain.key                     llama-cpp-service.yaml     postgres-pv.yaml          teamcity-agent.yaml           teamcity-service.yaml
+certs                     docker-registry-pvc.yaml              flask-app-deployment.yaml      myapp                      postgres-secret.yaml      teamcity-configmap.yaml       vtam-deployment.yaml
+configmap.yaml            docker-registry-pv.yaml               flask-app-deployment.yaml.bck  ney                        postgres-service.yaml     teamcity-deployment.yaml      vtam-service.yaml
+create_secrets.sh         docker-registry-service.yaml          flask-app-service.yaml         nginx-ingress.yaml         README.md                 teamcity-deployment.yaml.bck
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running   0          4d16h
+docker-registry-6d9ccf685-bs5fv    1/1     Running   0          65m
+postgres-697b74b7b9-q6scq          1/1     Running   0          7d19h
+registry-789576fd95-mkgz7          1/1     Running   0          14m
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running   0          18h
+teamcity-server-87d649c7b-p59m6    1/1     Running   0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running   0          7d22h
+[apohorai@pohakubemaster ~]$ kubectl delete pod docker-registry-6d9ccf685-bs5fv
+pod "docker-registry-6d9ccf685-bs5fv" deleted
+[apohorai@pohakubemaster ~]$ kubectl delete pod registry-789576fd95-mkgz7
+pod "registry-789576fd95-mkgz7" deleted
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running   0          4d16h
+docker-registry-6d9ccf685-4lc2t    1/1     Running   0          18s
+postgres-697b74b7b9-q6scq          1/1     Running   0          7d19h
+registry-789576fd95-bmwww          1/1     Running   0          5s
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running   0          18h
+teamcity-server-87d649c7b-p59m6    1/1     Running   0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running   0          7d22h
+[apohorai@pohakubemaster ~]$ kubectl delete pod docker-registry-6d9ccf685-4lc2t
+pod "docker-registry-6d9ccf685-4lc2t" deleted
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running   0          4d16h
+docker-registry-6d9ccf685-tmsqv    1/1     Running   0          4s
+postgres-697b74b7b9-q6scq          1/1     Running   0          7d19h
+registry-789576fd95-bmwww          1/1     Running   0          18s
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running   0          18h
+teamcity-server-87d649c7b-p59m6    1/1     Running   0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running   0          7d22h
+[apohorai@pohakubemaster ~]$ kubectl get deployments
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+auth-app          1/1     1            1           5d20h
+docker-registry   1/1     1            1           18h
+postgres          1/1     1            1           7d19h
+registry          1/1     1            1           66m
+teamcity-agent    1/1     1            1           18h
+teamcity-server   1/1     1            1           6d22h
+vtam-deployment   1/1     1            1           7d22h
+[apohorai@pohakubemaster ~]$ kubectl delete deployment docker-registry
+deployment.apps "docker-registry" deleted
+[apohorai@pohakubemaster ~]$ kubectl delete deployment registry
+deployment.apps "registry" deleted
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running   0          4d16h
+postgres-697b74b7b9-q6scq          1/1     Running   0          7d19h
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running   0          19h
+teamcity-server-87d649c7b-p59m6    1/1     Running   0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running   0          7d22h
+[apohorai@pohakubemaster ~]$ kubectl get deployments
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+auth-app          1/1     1            1           5d20h
+postgres          1/1     1            1           7d19h
+teamcity-agent    1/1     1            1           19h
+teamcity-server   1/1     1            1           6d22h
+vtam-deployment   1/1     1            1           7d22h
+[apohorai@pohakubemaster ~]$ kubectl get secrets
+NAME                 TYPE                DATA   AGE
+flask-auth-secrets   Opaque              3      7d19h
+postgres-secret      Opaque              3      7d21h
+registry-auth        Opaque              1      33m
+registry-tls         kubernetes.io/tls   2      18m
+[apohorai@pohakubemaster ~]$ kubectl delete secret registry-auth
+secret "registry-auth" deleted
+[apohorai@pohakubemaster ~]$ kubectl delete secret registry-tls
+secret "registry-tls" deleted
+[apohorai@pohakubemaster ~]$ kubectl get secrets
+NAME                 TYPE     DATA   AGE
+flask-auth-secrets   Opaque   3      7d19h
+postgres-secret      Opaque   3      7d21h
+[apohorai@pohakubemaster ~]$ kubectl get pvc
+NAME                STATUS   VOLUME        CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+postgres-pvc        Bound    postgres-pv   1Gi        RWO                           <unset>                 7d21h
+registry-pvc        Bound    registry-pv   5Gi        RWO                           <unset>                 2d19h
+teamcity-data-pvc   Bound    teamcity-pv   10Gi       RWO                           <unset>                 7d3h
+[apohorai@pohakubemaster ~]$ kubectl delete pvc registry-pvc
+persistentvolumeclaim "registry-pvc" deleted
+[apohorai@pohakubemaster ~]$ kubectl get pv
+NAME          CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS     CLAIM                       STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+postgres-pv   1Gi        RWO            Retain           Bound      default/postgres-pvc                       <unset>                          7d21h
+registry-pv   5Gi        RWO            Retain           Released   default/registry-pvc                       <unset>                          2d19h
+teamcity-pv   10Gi       RWO            Retain           Bound      default/teamcity-data-pvc                  <unset>                          7d3h
+[apohorai@pohakubemaster ~]$ kubectl delete pv registry-pv
+persistentvolume "registry-pv" deleted
+[apohorai@pohakubemaster ~]$ mkdir archive
+[apohorai@pohakubemaster ~]$ ls
+archive                   create_secrets.sh                     docker-registry-service.yaml   flask-app-service.yaml     nginx-ingress.yaml        README.md                 teamcity-deployment.yaml.bck
+auth-app-deployment.yaml  docker-registry-auth.yaml             docker_secrets                 llama.cpp                  postgres-deployment.yaml  registry.yaml             teamcity-pvc.yaml
+auth-app-service.yaml     docker-registry-deployment.yaml       domain.crt                     llama-cpp-deployment.yaml  postgres-pvc.yaml         server.xml                teamcity-pv.yaml
+auth-secrets.yaml         docker-registry-deployment.yaml.yaml  domain.key                     llama-cpp-service.yaml     postgres-pv.yaml          teamcity-agent.yaml       teamcity-service.yaml
+certs                     docker-registry-pvc.yaml              flask-app-deployment.yaml      myapp                      postgres-secret.yaml      teamcity-configmap.yaml   vtam-deployment.yaml
+configmap.yaml            docker-registry-pv.yaml               flask-app-deployment.yaml.bck  ney                        postgres-service.yaml     teamcity-deployment.yaml  vtam-service.yaml
+[apohorai@pohakubemaster ~]$ mv doc* archive/
+[apohorai@pohakubemaster ~]$ ls
+archive                   configmap.yaml             flask-app-deployment.yaml.bck  myapp                     postgres-pv.yaml       server.xml                    teamcity-pvc.yaml
+auth-app-deployment.yaml  create_secrets.sh          flask-app-service.yaml         ney                       postgres-secret.yaml   teamcity-agent.yaml           teamcity-pv.yaml
+auth-app-service.yaml     domain.crt                 llama.cpp                      nginx-ingress.yaml        postgres-service.yaml  teamcity-configmap.yaml       teamcity-service.yaml
+auth-secrets.yaml         domain.key                 llama-cpp-deployment.yaml      postgres-deployment.yaml  README.md              teamcity-deployment.yaml      vtam-deployment.yaml
+certs                     flask-app-deployment.yaml  llama-cpp-service.yaml         postgres-pvc.yaml         registry.yaml          teamcity-deployment.yaml.bck  vtam-service.yaml
+[apohorai@pohakubemaster ~]$ mv flask-app-* archive/
+[apohorai@pohakubemaster ~]$ ls
+archive                   certs              domain.key                 myapp                     postgres-pvc.yaml      README.md            teamcity-configmap.yaml       teamcity-pv.yaml
+auth-app-deployment.yaml  configmap.yaml     llama.cpp                  ney                       postgres-pv.yaml       registry.yaml        teamcity-deployment.yaml      teamcity-service.yaml
+auth-app-service.yaml     create_secrets.sh  llama-cpp-deployment.yaml  nginx-ingress.yaml        postgres-secret.yaml   server.xml           teamcity-deployment.yaml.bck  vtam-deployment.yaml
+auth-secrets.yaml         domain.crt         llama-cpp-service.yaml     postgres-deployment.yaml  postgres-service.yaml  teamcity-agent.yaml  teamcity-pvc.yaml             vtam-service.yaml
+[apohorai@pohakubemaster ~]$ cat domain.
+cat: domain.: No such file or directory
+[apohorai@pohakubemaster ~]$ rm do*
+[apohorai@pohakubemaster ~]$ ls
+archive                   certs              llama-cpp-deployment.yaml  nginx-ingress.yaml        postgres-secret.yaml   server.xml                teamcity-deployment.yaml.bck  vtam-deployment.yaml
+auth-app-deployment.yaml  configmap.yaml     llama-cpp-service.yaml     postgres-deployment.yaml  postgres-service.yaml  teamcity-agent.yaml       teamcity-pvc.yaml             vtam-service.yaml
+auth-app-service.yaml     create_secrets.sh  myapp                      postgres-pvc.yaml         README.md              teamcity-configmap.yaml   teamcity-pv.yaml
+auth-secrets.yaml         llama.cpp          ney                        postgres-pv.yaml          registry.yaml          teamcity-deployment.yaml  teamcity-service.yaml
+[apohorai@pohakubemaster ~]$ rm -rf certs
+[apohorai@pohakubemaster ~]$ ls
+archive                   configmap.yaml             llama-cpp-service.yaml  postgres-deployment.yaml  postgres-service.yaml  teamcity-agent.yaml           teamcity-pvc.yaml      vtam-service.yaml
+auth-app-deployment.yaml  create_secrets.sh          myapp                   postgres-pvc.yaml         README.md              teamcity-configmap.yaml       teamcity-pv.yaml
+auth-app-service.yaml     llama.cpp                  ney                     postgres-pv.yaml          registry.yaml          teamcity-deployment.yaml      teamcity-service.yaml
+auth-secrets.yaml         llama-cpp-deployment.yaml  nginx-ingress.yaml      postgres-secret.yaml      server.xml             teamcity-deployment.yaml.bck  vtam-deployment.yaml
+[apohorai@pohakubemaster ~]$ cat ney
+# NAT: allow guest 192.168.100.0/24 to use host's internet enp5s0
+sudo iptables -t nat -A POSTROUTING -s 192.168.100.10/24 -o enp5s0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -s 192.168.101.11/24 -o enp5s0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -s 192.168.102.22/24 -o enp5s0 -j MASQUERADE
+
+# Forward packets from TAP to outside
+sudo iptables -A FORWARD -i tap_rhel9_mast -o enp5s0 -j ACCEPT
+sudo iptables -A FORWARD -i tap_rhel9_node1 -o enp5s0 -j ACCEPT
+sudo iptables -A FORWARD -i tap_rhel9_node2 -o enp5s0 -j ACCEPT
+
+# Allow return traffic from internet to guest
+sudo iptables -A FORWARD -i enp5s0 -o tap_rhel9_mast -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i enp5s0 -o tap_rhel9_node1 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i enp5s0 -o tap_rhel9_node2 -m state --state RELATED,ESTABLISHED -j ACCEPT
+[apohorai@pohakubemaster ~]$ ls
+archive                   configmap.yaml             llama-cpp-service.yaml  postgres-deployment.yaml  postgres-service.yaml  teamcity-agent.yaml           teamcity-pvc.yaml      vtam-service.yaml
+auth-app-deployment.yaml  create_secrets.sh          myapp                   postgres-pvc.yaml         README.md              teamcity-configmap.yaml       teamcity-pv.yaml
+auth-app-service.yaml     llama.cpp                  ney                     postgres-pv.yaml          registry.yaml          teamcity-deployment.yaml      teamcity-service.yaml
+auth-secrets.yaml         llama-cpp-deployment.yaml  nginx-ingress.yaml      postgres-secret.yaml      server.xml             teamcity-deployment.yaml.bck  vtam-deployment.yaml
+[apohorai@pohakubemaster ~]$ rm ney
+[apohorai@pohakubemaster ~]$ rm registry.yaml 
+[apohorai@pohakubemaster ~]$ ls
+archive                   configmap.yaml             llama-cpp-service.yaml    postgres-pvc.yaml      README.md                teamcity-deployment.yaml      teamcity-service.yaml
+auth-app-deployment.yaml  create_secrets.sh          myapp                     postgres-pv.yaml       server.xml               teamcity-deployment.yaml.bck  vtam-deployment.yaml
+auth-app-service.yaml     llama.cpp                  nginx-ingress.yaml        postgres-secret.yaml   teamcity-agent.yaml      teamcity-pvc.yaml             vtam-service.yaml
+auth-secrets.yaml         llama-cpp-deployment.yaml  postgres-deployment.yaml  postgres-service.yaml  teamcity-configmap.yaml  teamcity-pv.yaml
+[apohorai@pohakubemaster ~]$ cat server.xml 
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Note:  A "Server" is not itself a "Container", so you may not
+     define subcomponents such as "Valves" at this level.
+     Documentation at /docs/config/server.html
+ -->
+<Server port="8105" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  <!-- Security listener. Documentation at /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
+  <!--APR library loader. Documentation at /docs/apr.html -->
+  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+  <!-- Prevent memory leaks due to use of particular java/javax APIs-->
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+
+  <!-- Global JNDI resources
+       Documentation at /docs/jndi-resources-howto.html
+  -->
+  <GlobalNamingResources>
+    <!-- Editable user database that can also be used by
+         UserDatabaseRealm to authenticate users
+    -->
+    <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
+  </GlobalNamingResources>
+
+  <!-- A "Service" is a collection of one or more "Connectors" that share
+       a single "Container" Note:  A "Service" is not itself a "Container",
+       so you may not define subcomponents such as "Valves" at this level.
+       Documentation at /docs/config/service.html
+   -->
+  <Service name="Catalina">
+
+    <!--The connectors can use a shared executor, you can define one or more named thread pools-->
+    <!--
+    <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+        maxThreads="150" minSpareThreads="4"/>
+    -->
+
+
+    <!-- A "Connector" represents an endpoint by which requests are received
+         and responses are returned. Documentation at :
+         Java HTTP Connector: /docs/config/http.html (blocking & non-blocking)
+         Java AJP  Connector: /docs/config/ajp.html
+         APR (HTTP/AJP) Connector: /docs/apr.html
+         Define a non-SSL HTTP/1.1 Connector on port 8111
+    -->
+    <Connector port="8111" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               connectionTimeout="60000"
+               redirectPort="8543"
+               useBodyEncodingForURI="true"
+               tcpNoDelay="1"
+               maxHttpHeaderSize="16000"
+    />
+
+
+    <!-- Uncomment if connector with Http11NioProtocol does not work reliably  -->
+    <!--
+    <Connector port="8111" protocol="HTTP/1.1"
+               connectionTimeout="60000"
+               redirectPort="8543"
+               useBodyEncodingForURI="true"
+        />
+    -->
+
+    <!-- A "Connector" using the shared thread pool-->
+    <!--
+    <Connector executor="tomcatThreadPool"
+               port="8111" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8543" />
+    -->
+    <!-- Define a SSL HTTP/1.1 Connector on port 8543
+         This connector uses the JSSE configuration, when using APR, the
+         connector should be using the OpenSSL style configuration
+         described in the APR documentation -->
+    <!--
+    <Connector port="8543" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               connectionTimeout="60000"
+               useBodyEncodingForURI="true"
+               socket.txBufSize="64000"
+               socket.rxBufSize="64000"
+               SSLEnabled="true"
+               scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS"/>
+    -->
+
+    <!-- Define an AJP 1.3 Connector on port 8109 -->
+    <!--
+    <Connector port="8109" protocol="AJP/1.3" redirectPort="8543" />
+    -->
+
+
+    <!-- An Engine represents the entry point (within Catalina) that processes
+         every request.  The Engine implementation for Tomcat stand alone
+         analyzes the HTTP headers included with the request, and passes them
+         on to the appropriate Host (virtual host).
+         Documentation at /docs/config/engine.html -->
+
+    <!-- You should set jvmRoute to support load-balancing via AJP ie :
+    <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
+    -->
+    <Engine name="Catalina" defaultHost="localhost">
+
+      <!--For clustering, please take a look at documentation at:
+          /docs/cluster-howto.html  (simple how to)
+          /docs/config/cluster.html (reference documentation) -->
+      <!--
+      <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
+      -->
+
+      <!-- Use the LockOutRealm to prevent attempts to guess user passwords
+           via a brute-force attack -->
+      <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <!-- This Realm uses the UserDatabase configured in the global JNDI
+             resources under the key "UserDatabase".  Any edits
+             that are performed against this UserDatabase are immediately
+             available for use by the Realm.  -->
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+               resourceName="UserDatabase"/>
+      </Realm>
+
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+<Context path="/teamcity" docBase="ROOT" />
+        <Valve className="org.apache.catalina.valves.ErrorReportValve"
+               showReport="false"
+               showServerInfo="false" />
+
+        <!-- SingleSignOn valve, share authentication between web applications
+             Documentation at: /docs/config/valve.html -->
+        <!--
+        <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+        -->
+
+        <!-- Access log processes all example.
+             Documentation at: /docs/config/valve.html
+             Note: The pattern used is equivalent to using pattern="common" -->
+        <!--
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log." suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+        -->
+      </Host>
+    </Engine>
+  </Service>
+</Server>
+[apohorai@pohakubemaster ~]$ ls
+archive                   configmap.yaml             llama-cpp-service.yaml    postgres-pvc.yaml      README.md                teamcity-deployment.yaml      teamcity-service.yaml
+auth-app-deployment.yaml  create_secrets.sh          myapp                     postgres-pv.yaml       server.xml               teamcity-deployment.yaml.bck  vtam-deployment.yaml
+auth-app-service.yaml     llama.cpp                  nginx-ingress.yaml        postgres-secret.yaml   teamcity-agent.yaml      teamcity-pvc.yaml             vtam-service.yaml
+auth-secrets.yaml         llama-cpp-deployment.yaml  postgres-deployment.yaml  postgres-service.yaml  teamcity-configmap.yaml  teamcity-pv.yaml
+[apohorai@pohakubemaster ~]$ mkdir -p certs
+[apohorai@pohakubemaster ~]$ openssl req -x509 -newkey rsa:4096 -days 365 -nodes -sha256 \
+  -keyout certs/tls.key -out certs/tls.crt \
+  -subj "/CN=192.168.100.100" \
+  -addext "subjectAltName=DNS:192.168.100.100"
+..+..+...+.........+......+......+.+..+.......+...+..+++++++++++++++++++++++++++++++++++++++++++++*..+...............+..+......+...+....+...+..+.+.....+.+........+......+.+.....+.+.........+...+...+..+...+....+...+......+.....+......+....+..+....+..............+.+++++++++++++++++++++++++++++++++++++++++++++*................+..................+....+......+...+..............+..........+..+.........+............+............+.......+.....+....+......+...+......+...........+.+...............+..+.+...........+.+.....+....+.........+..+.......+...+..............+...+...............+.+..+.........+...+............+..........+.....+......+...+..........+.....+.......+.....+....+...+..................+........+.+.....+.........+.+.....+......+...+......+.+........+.....................+.+...+..+....+.....+......+............+......................+.....+......+.......+...............+...+............+...+...+.........+.....+.............+...............+..+......+.+.....+...+.......+...+.....+...+++++
+.......+...........+...+.+.....+....+......+.....+....+......+...+..+...+...+.......+......+...........+.+++++++++++++++++++++++++++++++++++++++++++++*......+..+++++++++++++++++++++++++++++++++++++++++++++*.+..+......+.......+......+......+...+.....+...+.............+.....+.+......+.....+...+.........+++++
+-----
+[apohorai@pohakubemaster ~]$ mkdir -p auth
+
+docker run --rm --entrypoint htpasswd \
+  -v $(pwd)/auth:/auth \
+  httpd:2 -Bbn apohorai timike55 > auth/htpasswd
+docker: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Head "http://%2Fvar%2Frun%2Fdocker.sock/_ping": dial unix /var/run/docker.sock: connect: permission denied
+
+Run 'docker run --help' for more information
+[apohorai@pohakubemaster ~]$ sudo docker run --rm --entrypoint htpasswd   -v $(pwd)/auth:/auth   httpd:2 -Bbn apohorai timike55 > auth/htpasswd
+[sudo] password for apohorai: 
+Unable to find image 'httpd:2' locally
+2: Pulling from library/httpd
+dad67da3f26b: Already exists 
+d0a755bf09a1: Pull complete 
+4f4fb700ef54: Pull complete 
+be5c5a616c3a: Pull complete 
+d1042d58e186: Pull complete 
+c06cec1379c2: Pull complete 
+Digest: sha256:f6557a77ee2f16c50a5ccbb2564a3fd56087da311bf69a160d43f73b23d3af2d
+Status: Downloaded newer image for httpd:2
+[apohorai@pohakubemaster ~]$ ls -la auth
+total 8
+drwxr-xr-x.  2 apohorai apohorai   22 Jun 16 22:15 .
+drwx------. 14 apohorai apohorai 4096 Jun 16 22:15 ..
+-rw-r--r--.  1 apohorai apohorai   71 Jun 16 22:15 htpasswd
+[apohorai@pohakubemaster ~]$ date
+Mon Jun 16 10:16:23 PM EDT 2025
+[apohorai@pohakubemaster ~]$ rm auth/htpasswd 
+[apohorai@pohakubemaster ~]$ sudo docker run --rm --entrypoint htpasswd   -v $(pwd)/auth:/auth   httpd:2 -Bbn apohorai timike55 > auth/htpasswd
+[apohorai@pohakubemaster ~]$ ls -la auth
+total 8
+drwxr-xr-x.  2 apohorai apohorai   22 Jun 16 22:17 .
+drwx------. 14 apohorai apohorai 4096 Jun 16 22:15 ..
+-rw-r--r--.  1 apohorai apohorai   71 Jun 16 22:17 htpasswd
+[apohorai@pohakubemaster ~]$ kubectl create secret tls docker-certs-secret \
+  --cert=./certs/tls.crt --key=./certs/tls.key
+
+kubectl create secret generic docker-auth-secret \
+  --from-file=./auth/htpasswd
+secret/docker-certs-secret created
+secret/docker-auth-secret created
+[apohorai@pohakubemaster ~]$ kubectl get secrets
+NAME                  TYPE                DATA   AGE
+docker-auth-secret    Opaque              1      11s
+docker-certs-secret   kubernetes.io/tls   2      11s
+flask-auth-secrets    Opaque              3      7d19h
+postgres-secret       Opaque              3      7d21h
+[apohorai@pohakubemaster ~]$ vim docker-registry-pv.yaml
+[apohorai@pohakubemaster ~]$ apply -f docker-registry-pv.yaml
+-bash: apply: command not found
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registry-pv.yaml
+persistentvolume/registry-pv created
+persistentvolumeclaim/registry-pvc created
+[apohorai@pohakubemaster ~]$ kubectl get pvc
+NAME                STATUS   VOLUME        CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+postgres-pvc        Bound    postgres-pv   1Gi        RWO                           <unset>                 7d21h
+registry-pvc        Bound    registry-pv   20Gi       RWO                           <unset>                 6s
+teamcity-data-pvc   Bound    teamcity-pv   10Gi       RWO                           <unset>                 7d4h
+[apohorai@pohakubemaster ~]$ vim docker-registrt-deployment.yaml
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registry-deployment.yaml
+error: the path "docker-registry-deployment.yaml" does not exist
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registr
+docker-registrt-deployment.yaml  docker-registry-pv.yaml          
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registr
+docker-registrt-deployment.yaml  docker-registry-pv.yaml          
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registrt-deployment.yaml 
+deployment.apps/docker-registry created
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS              RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running             0          4d16h
+docker-registry-67457d5c4d-stp8m   0/1     ContainerCreating   0          6s
+postgres-697b74b7b9-q6scq          1/1     Running             0          7d19h
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running             0          19h
+teamcity-server-87d649c7b-p59m6    1/1     Running             0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running             0          7d22h
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS              RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running             0          4d16h
+docker-registry-67457d5c4d-stp8m   0/1     ContainerCreating   0          10s
+postgres-697b74b7b9-q6scq          1/1     Running             0          7d19h
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running             0          19h
+teamcity-server-87d649c7b-p59m6    1/1     Running             0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running             0          7d22h
+[apohorai@pohakubemaster ~]$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+auth-app-6858c4446c-lg4rf          1/1     Running   0          4d16h
+docker-registry-67457d5c4d-stp8m   1/1     Running   0          14s
+postgres-697b74b7b9-q6scq          1/1     Running   0          7d19h
+teamcity-agent-7c7479f47c-5wpkw    1/1     Running   0          19h
+teamcity-server-87d649c7b-p59m6    1/1     Running   0          6d21h
+vtam-deployment-7d88c77dd7-lfvrv   1/1     Running   0          7d22h
+[apohorai@pohakubemaster ~]$ vim docker-registry-service.yaml
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registry-service.yaml
+The Service "registry-service" is invalid: spec.ports[0].nodePort: Invalid value: 32443: provided port is already allocated
+[apohorai@pohakubemaster ~]$ kubectl get svc
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+auth-app-service   NodePort    10.109.69.82     <none>        5000:30080/TCP   7d19h
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          15d
+postgres-service   NodePort    10.97.161.145    <none>        5432:30032/TCP   7d19h
+registry           NodePort    10.101.225.123   <none>        443:32443/TCP    26m
+teamcity-service   NodePort    10.110.135.243   <none>        8111:30081/TCP   7d18h
+vtam-service       NodePort    10.100.7.72      <none>        80:30214/TCP     7d22h
+[apohorai@pohakubemaster ~]$ kubectl delete svc registry
+service "registry" deleted
+[apohorai@pohakubemaster ~]$ kubectl get svc
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+auth-app-service   NodePort    10.109.69.82     <none>        5000:30080/TCP   7d19h
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          15d
+postgres-service   NodePort    10.97.161.145    <none>        5432:30032/TCP   7d19h
+teamcity-service   NodePort    10.110.135.243   <none>        8111:30081/TCP   7d18h
+vtam-service       NodePort    10.100.7.72      <none>        80:30214/TCP     7d22h
+[apohorai@pohakubemaster ~]$ kubectl apply -f docker-registry-service.yaml
+service/registry-service created
+[apohorai@pohakubemaster ~]$ kubectl get svc
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+auth-app-service   NodePort    10.109.69.82     <none>        5000:30080/TCP   7d19h
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          15d
+postgres-service   NodePort    10.97.161.145    <none>        5432:30032/TCP   7d19h
+registry-service   NodePort    10.98.191.157    <none>        443:32443/TCP    4s
+teamcity-service   NodePort    10.110.135.243   <none>        8111:30081/TCP   7d18h
+vtam-service       NodePort    10.100.7.72      <none>        80:30214/TCP     7d22h
+[apohorai@pohakubemaster ~]$ sudo cp certs/tls.crt /usr/local/share/ca-certificates/tls.crt
+[sudo] password for apohorai: 
+cp: cannot create regular file '/usr/local/share/ca-certificates/tls.crt': No such file or directory
+[apohorai@pohakubemaster ~]$ sudo cp certs/tls.crt /etc/pki/ca-trust/source/anchors/
+[sudo] password for apohorai: 
+[apohorai@pohakubemaster ~]$ sudo update-ca-trust
+[apohorai@pohakubemaster ~]$ sudo systemctl restart docker
+[apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T22:43:09-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc0002aae00}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: cannot validate certificate for 192.168.100.100 because it doesn't contain any IP SANs"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: cannot validate certificate for 192.168.100.100 because it doesn't contain any IP SANs
+[apohorai@pohakubemaster ~]$ vim openssl.cnf
+[apohorai@pohakubemaster ~]$ openssl req -x509 -newkey rsa:4096 -days 365 -nodes -sha256 \
+  -keyout certs/tls.key -out certs/tls.crt -config openssl.cnf
+...............+...+..+.+...+..+.......+..+...+...+.......+++++++++++++++++++++++++++++++++++++++++++++*.+............+..........+..+++++++++++++++++++++++++++++++++++++++++++++*..+..+..........+........+....+..+.........+................+.........+......+......+..............+...+.+...............+......+...+.....+.......+......+...+.....+....+.....+...+.......+........+....+...........+...+....+.....+............+...+.........................+...+...+..+............+...........................................+..+......................+...+...+.....+...+.+...+..+....+.........+..+.+..+...............+......+.......+............+.....+......+......+.........+.......+..+..........+.......................+............+..........+...+...+..+....+.....+.........+.......+........+....+........+++++
+..+...+.......+.....+.+.....+....+...............+...+..............+......+...+.......+..+++++++++++++++++++++++++++++++++++++++++++++*...............+++++++++++++++++++++++++++++++++++++++++++++*......+.+.....+............+.+.....+..........+..+...+.......+..............+......+...................+......+..............+...+.+......+...........+...+.........+......+.+...+.................+.+.....+....+...+...+..+...+....+...+.................+.............+.....+.+..+..................+......+.+.........+......+..+.+...........+.........+......+......+.......+.....+.+..+....+........+...+.......+......+..+....+.........+.....+......+++++
+-----
+[apohorai@pohakubemaster ~]$ kubectl delete secret docker-certs-secret
+secret "docker-certs-secret" deleted
+[apohorai@pohakubemaster ~]$ kubectl create secret tls docker-certs-secret \
+  --cert=./certs/tls.crt --key=./certs/tls.key
+secret/docker-certs-secret created
+[apohorai@pohakubemaster ~]$ kubectl rollout restart deployment docker-registry
+deployment.apps/docker-registry restarted
+[apohorai@pohakubemaster ~]$ sudo cp certs/tls.crt /etc/pki/ca-trust/source/anchors/
+sudo update-ca-trust
+sudo systemctl restart docker
+[apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T22:46:34-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc000352c40}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate relies on legacy Common Name field, use SANs instead"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate relies on legacy Common Name field, use SANs instead
+[apohorai@pohakubemaster ~]$ vim openssl.cnf
+[apohorai@pohakubemaster ~]$ vim openssl.cnf
+[apohorai@pohakubemaster ~]$ vim openssl.cnf
+[apohorai@pohakubemaster ~]$ openssl req -x509 -newkey rsa:4096 -days 365 -nodes -sha256 \
+  -keyout certs/tls.key -out certs/tls.crt -config openssl.cnf -extensions req_ext
+....+.........+.........+...........+......+++++++++++++++++++++++++++++++++++++++++++++*...+...+..+....+...+.....+......+..........+.....+.+...+...............+...........+....+...+............+.....+...+...+..........+.....+.+........+.............+..+.+......+...+........+.........+.+...+.........+..+....+..+++++++++++++++++++++++++++++++++++++++++++++*.......+..........+...........+....+...+...+.....+...+....+......+..+....+.....+......+....+...........+...................+........+.+.....+.+..............+.+...+...............+.................+...+......+.......+.....+..........+..............+......+...+.+...+...+..............+.........+....+....................+.....................+.+.....+.+...+++++
+........+++++++++++++++++++++++++++++++++++++++++++++*.....+...+...........+......+....+..+...........................+......+.+......+...+..+...+.+...+............+.....+...+......+................+......+..............+..........+.....+....+..............+.+..+...+.+...+..+.+..+............+++++++++++++++++++++++++++++++++++++++++++++*...........+.+............+...+..+............+....+..+...............+....+...........+...+.+........+.+.....+.+...+.....+...............+......+............+......................+..+.+..............+......+...+.........+......+.+.....+...............+....+..+....+...+..+...+.......+.....+.........+....+..+....+.........+...............+.....+...+....+...+..+...............+.+...+..+..........+..+..........+...........+....+...+..+...............+...+..........+..+.+...........+...+.......+..................+...+...............+.....+...+..........+......+...........+...+.+...+...+...+..+..........+..................+......+........+.......+...+...........................+........+...+...+.+......+...............+...+.....+......+......+.......+..+.+..................+.........+.....+.+...........+...................+.........+..+...+......+.+........+...+.......+...+........+.+...+...+.....+...+.......+...+...........+.........................+++++
+-----
+[apohorai@pohakubemaster ~]$ kubectl delete secret docker-certs-secret
+secret "docker-certs-secret" deleted
+[apohorai@pohakubemaster ~]$ kubectl create secret tls docker-certs-secret \
+  --cert=./certs/tls.crt --key=./certs/tls.key
+secret/docker-certs-secret created
+[apohorai@pohakubemaster ~]$ kubectl rollout restart deployment docker-registry
+deployment.apps/docker-registry restarted
+[apohorai@pohakubemaster ~]$ sudo cp certs/tls.crt /etc/pki/ca-trust/source/anchors/
+sudo update-ca-trust
+sudo systemctl restart docker
+[sudo] password for apohorai: 
+[apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T22:53:34-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc0002ace00}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+[apohorai@pohakubemaster ~]$ undefined^C
+[apohorai@pohakubemaster ~]$ openssl s_client -showcerts -connect registry-1.docker.io:443
+Connecting to 98.85.153.80
+CONNECTED(00000003)
+depth=2 C=US, O=Amazon, CN=Amazon Root CA 1
+verify return:1
+depth=1 C=US, O=Amazon, CN=Amazon RSA 2048 M03
+verify return:1
+depth=0 CN=*.docker.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN=*.docker.com
+   i:C=US, O=Amazon, CN=Amazon RSA 2048 M03
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Mar  5 00:00:00 2025 GMT; NotAfter: Apr  3 23:59:59 2026 GMT
+-----BEGIN CERTIFICATE-----
+MIIGLDCCBRSgAwIBAgIQBl4sDeHUUWTh+IEzymKCBDANBgkqhkiG9w0BAQsFADA8
+MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRwwGgYDVQQDExNBbWF6b24g
+UlNBIDIwNDggTTAzMB4XDTI1MDMwNTAwMDAwMFoXDTI2MDQwMzIzNTk1OVowFzEV
+MBMGA1UEAwwMKi5kb2NrZXIuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEA1aWA/u4GWPT2TZs4oXciX3fE2w0HGtiKB0g3FLR3ZMlmwU4+p4pHOzLP
+GYENJGRNIkfM7+FKVjkkjOelGQHuxkGY/Ksp9e91IKwN488bF+oV6+TRAdMS0N7a
+gUuppHyU7SH79E4eqHBjCr8MV5CqlTrrR9cufMEL5ohYRyjgyYmo7tdRKxYCDQ1v
+Hm2e4+eRj9i9KYhB10k2WAS4aEKd+fYaQdMII2pWCrZcGUDra/iyuzzScJABQPai
+NXcD/EtA7gO6AOzxyt6nwlKPgPxwrabU6ABpv2HGiiGMqyKf6lHa4NtSkt7wb7UP
+MAxGJM142gZaM6zZPULcN7tOtxFPdQIDAQABo4IDTTCCA0kwHwYDVR0jBBgwFoAU
+VdkYX9IczAHhWLS+q9lVQgHXLgIwHQYDVR0OBBYEFLf74wFjj5n219JQyL8EmIoX
+BtcBMH8GA1UdEQR4MHaCDCouZG9ja2VyLmNvbYINZG9ja2VyY29uLmNvbYIKZG9j
+a2VyLmNvbYIRKi5kb2NzLmRvY2tlci5jb22CD2RvY3MuZG9ja2VyLmNvbYIJZG9j
+a2VyLmlvggsqLmRvY2tlci5pb4IPKi5kb2NrZXJjb24uY29tMBMGA1UdIAQMMAow
+CAYGZ4EMAQIBMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYI
+KwYBBQUHAwIwOwYDVR0fBDQwMjAwoC6gLIYqaHR0cDovL2NybC5yMm0wMy5hbWF6
+b250cnVzdC5jb20vcjJtMDMuY3JsMHUGCCsGAQUFBwEBBGkwZzAtBggrBgEFBQcw
+AYYhaHR0cDovL29jc3AucjJtMDMuYW1hem9udHJ1c3QuY29tMDYGCCsGAQUFBzAC
+hipodHRwOi8vY3J0LnIybTAzLmFtYXpvbnRydXN0LmNvbS9yMm0wMy5jZXIwDAYD
+VR0TAQH/BAIwADCCAX4GCisGAQQB1nkCBAIEggFuBIIBagFoAHYADleUvPOuqT4z
+GyyZB7P3kN+bwj1xMiXdIaklrGHFTiEAAAGVZTQ1VgAABAMARzBFAiBkc4g8clpd
+JOayOejJIjeVPY7MkRdFkHq5FHYizFPxVgIhAJJu1jWu/jmFUiWxLYlSZynjwqVl
+RmhUfnQQGKFjoXT9AHcAZBHEbKQS7KeJHKICLgC8q08oB9QeNSer6v7VA8l9zfAA
+AAGVZTQ1lwAABAMASDBGAiEAt6RMLrvkYuROSCAZ/oQ7jeLMn8bID3Hgzgk3mHAN
+Lq0CIQD6qZqS65lUS1AJ7+8blpOt+VQf+qpI5Hixmgr1h6tzywB1AEmcm2neHXzs
+/DbezYdkprhbrwqHgBnRVVL76esp3fjDAAABlWU0Na4AAAQDAEYwRAIgeDUfX5NE
+a57CdX1O6ao054KxAdD9eX6o9JfDkfaSBsYCIGZr3bGtKIb0yoDtNpDQYGqSf2Sr
+5ZdImVQMhd/06LoTMA0GCSqGSIb3DQEBCwUAA4IBAQA3fciwoQctMbQ55m6H7VUM
+Cvlt8ce1yletJ0e4gXAQBecJfOXHCeQP7pCQ3ynfc13CCggUhBd9KmkeBy1ofVwp
+Gnema10EXX6oofUGUusIM7GIeDR5q1snDkmws+TTw8CppIRt9KpeJR2ELM8NcMwY
+j0mzLEQUxIsQFvLtxctO7WAT3Rn2dXvTwehRFbVxi2XcMF8ysKxPk/26KGCX/SIm
+sQ/it/k5WZQal6lXcEQ5iUdTaKR8M4/DujXkHm2hwhIG/lh0/sf+iP1jTNJebmSO
+mpECCa5cHPWVmcSkPFt21lZYs64Qk6McPdtXvvD+wf4d5wiQjVlwpJlXcZB1AhLI
+-----END CERTIFICATE-----
+ 1 s:C=US, O=Amazon, CN=Amazon RSA 2048 M03
+   i:C=US, O=Amazon, CN=Amazon Root CA 1
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Aug 23 22:26:04 2022 GMT; NotAfter: Aug 23 22:26:04 2030 GMT
+-----BEGIN CERTIFICATE-----
+MIIEXjCCA0agAwIBAgITB3MSTNQG0mfAmRzdKZqfODF5hTANBgkqhkiG9w0BAQsF
+ADA5MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6
+b24gUm9vdCBDQSAxMB4XDTIyMDgyMzIyMjYwNFoXDTMwMDgyMzIyMjYwNFowPDEL
+MAkGA1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEcMBoGA1UEAxMTQW1hem9uIFJT
+QSAyMDQ4IE0wMzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALd/pVko
+8vuM475Tf45HV3BbCl/B9Jy89G1CRkFjcPY06WA9lS+7dWbUA7GtWUKoksr69hKM
+wcMsNpxlw7b3jeXFgxB09/nmalcAWtnLzF+LaDKEA5DQmvKzuh1nfIfqEiKCQSmX
+Xh09Xs+dO7cm5qbaL2hhNJCSAejciwcvOFgFNgEMR42wm6KIFHsQW28jhA+1u/M0
+p6fVwReuEgZfLfdx82Px0LJck3lST3EB/JfbdsdOzzzg5YkY1dfuqf8y5fUeZ7Cz
+WXbTjujwX/TovmeWKA36VLCz75azW6tDNuDn66FOpADZZ9omVaF6BqNJiLMVl6P3
+/c0OiUMC6Z5OfKcCAwEAAaOCAVowggFWMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYD
+VR0PAQH/BAQDAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAdBgNV
+HQ4EFgQUVdkYX9IczAHhWLS+q9lVQgHXLgIwHwYDVR0jBBgwFoAUhBjMhTTsvAyU
+lC4IWZzHshBOCggwewYIKwYBBQUHAQEEbzBtMC8GCCsGAQUFBzABhiNodHRwOi8v
+b2NzcC5yb290Y2ExLmFtYXpvbnRydXN0LmNvbTA6BggrBgEFBQcwAoYuaHR0cDov
+L2NydC5yb290Y2ExLmFtYXpvbnRydXN0LmNvbS9yb290Y2ExLmNlcjA/BgNVHR8E
+ODA2MDSgMqAwhi5odHRwOi8vY3JsLnJvb3RjYTEuYW1hem9udHJ1c3QuY29tL3Jv
+b3RjYTEuY3JsMBMGA1UdIAQMMAowCAYGZ4EMAQIBMA0GCSqGSIb3DQEBCwUAA4IB
+AQAGjeWm2cC+3z2MzSCnte46/7JZvj3iQZDY7EvODNdZF41n71Lrk9kbfNwerK0d
+VNzW36Wefr7j7ZSwBVg50W5ay65jNSN74TTQV1yt4WnSbVvN6KlMs1hiyOZdoHKs
+KDV2UGNxbdoBYCQNa2GYF8FQIWLugNp35aSOpMy6cFlymFQomIrnOQHwK1nvVY4q
+xDSJMU/gNJz17D8ArPN3ngnyZ2TwepJ0uBINz3G5te2rdFUF4i4Y3Bb7FUlHDYm4
+u8aIRGpk2ZpfXmxaoxnbIBZRvGLPSUuPwnwoUOMsJ8jirI5vs2dvchPb7MtI1rle
+i02f2ivH2vxkjDLltSpe2fiC
+-----END CERTIFICATE-----
+ 2 s:C=US, O=Amazon, CN=Amazon Root CA 1
+   i:C=US, ST=Arizona, L=Scottsdale, O=Starfield Technologies, Inc., CN=Starfield Services Root Certificate Authority - G2
+   a:PKEY: rsaEncryption, 2048 (bit); sigalg: RSA-SHA256
+   v:NotBefore: May 25 12:00:00 2015 GMT; NotAfter: Dec 31 01:00:00 2037 GMT
+-----BEGIN CERTIFICATE-----
+MIIEkjCCA3qgAwIBAgITBn+USionzfP6wq4rAfkI7rnExjANBgkqhkiG9w0BAQsF
+ADCBmDELMAkGA1UEBhMCVVMxEDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNj
+b3R0c2RhbGUxJTAjBgNVBAoTHFN0YXJmaWVsZCBUZWNobm9sb2dpZXMsIEluYy4x
+OzA5BgNVBAMTMlN0YXJmaWVsZCBTZXJ2aWNlcyBSb290IENlcnRpZmljYXRlIEF1
+dGhvcml0eSAtIEcyMB4XDTE1MDUyNTEyMDAwMFoXDTM3MTIzMTAxMDAwMFowOTEL
+MAkGA1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEZMBcGA1UEAxMQQW1hem9uIFJv
+b3QgQ0EgMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJ4gHHKeNXj
+ca9HgFB0fW7Y14h29Jlo91ghYPl0hAEvrAIthtOgQ3pOsqTQNroBvo3bSMgHFzZM
+9O6II8c+6zf1tRn4SWiw3te5djgdYZ6k/oI2peVKVuRF4fn9tBb6dNqcmzU5L/qw
+IFAGbHrQgLKm+a/sRxmPUDgH3KKHOVj4utWp+UhnMJbulHheb4mjUcAwhmahRWa6
+VOujw5H5SNz/0egwLX0tdHA114gk957EWW67c4cX8jJGKLhD+rcdqsq08p8kDi1L
+93FcXmn/6pUCyziKrlA4b9v7LWIbxcceVOF34GfID5yHI9Y/QCB/IIDEgEw+OyQm
+jgSubJrIqg0CAwEAAaOCATEwggEtMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/
+BAQDAgGGMB0GA1UdDgQWBBSEGMyFNOy8DJSULghZnMeyEE4KCDAfBgNVHSMEGDAW
+gBScXwDfqgHXMCs4iKK4bUqc8hGRgzB4BggrBgEFBQcBAQRsMGowLgYIKwYBBQUH
+MAGGImh0dHA6Ly9vY3NwLnJvb3RnMi5hbWF6b250cnVzdC5jb20wOAYIKwYBBQUH
+MAKGLGh0dHA6Ly9jcnQucm9vdGcyLmFtYXpvbnRydXN0LmNvbS9yb290ZzIuY2Vy
+MD0GA1UdHwQ2MDQwMqAwoC6GLGh0dHA6Ly9jcmwucm9vdGcyLmFtYXpvbnRydXN0
+LmNvbS9yb290ZzIuY3JsMBEGA1UdIAQKMAgwBgYEVR0gADANBgkqhkiG9w0BAQsF
+AAOCAQEAYjdCXLwQtT6LLOkMm2xF4gcAevnFWAu5CIw+7bMlPLVvUOTNNWqnkzSW
+MiGpSESrnO09tKpzbeR/FoCJbM8oAxiDR3mjEH4wW6w7sGDgd9QIpuEdfF7Au/ma
+eyKdpwAJfqxGF4PcnCZXmTA5YpaP7dreqsXMGz7KQ2hsVxa81Q4gLv7/wmpdLqBK
+bRRYh5TmOTFffHPLkIhqhBGWJ6bt2YFGpn6jcgAKUj6DiAdjd4lpFw85hdKrCEVN
+0FE6/V1dN2RMfjCyVSRCnTawXZwXgWHxyvkQAiSr6w10kY17RSlQOYiypok1JR4U
+akcjMS9cmvqtmg5iUaQqqcT5NJ0hGA==
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=CN=*.docker.com
+issuer=C=US, O=Amazon, CN=Amazon RSA 2048 M03
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 4434 bytes and written 395 bytes
+Verification: OK
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Server public key is 2048 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+HTTP/1.1 408 Request Time-out
+Content-length: 110
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html
+
+<html><body><h1>408 Request Time-out</h1>
+Your browser didn't send a complete request in time.
+</body></html>
+closed
+[apohorai@pohakubemaster ~]$ openssl s_client -showcerts -connect 192.168.100.100:32443
+Connecting to 192.168.100.100
+CONNECTED(00000003)
+Can't use SSL_get_servername
+depth=0 CN=192.168.100.100
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN=192.168.100.100
+verify return:1
+---
+Certificate chain
+ 0 s:CN=192.168.100.100
+   i:CN=192.168.100.100
+   a:PKEY: rsaEncryption, 4096 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Jun 17 02:52:31 2025 GMT; NotAfter: Jun 17 02:52:31 2026 GMT
+-----BEGIN CERTIFICATE-----
+MIIE9DCCAtygAwIBAgIUJKVN3vYVAylaLlvsb6W5N7ecKhswDQYJKoZIhvcNAQEL
+BQAwGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMB4XDTI1MDYxNzAyNTIzMVoX
+DTI2MDYxNzAyNTIzMVowGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMIICIjAN
+BgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvzAif4b8gCwiHFYWRZEV7wBFtdiw
+y8bQbcwIc4ID7ud2tPRp+r4TNY29rFx0kmLSDYL7fdEkMelGfP+2GRkSGHsF46/9
+YE3DWm2xZs4hdpNP2M9PKRO6R0H8PsRolitLIo9FiEmL75czCm6ZUA7Il5S2Df6K
+zyuMDaVkYRUa/Szv3ew20rPvkPlleinWv9PEoJerMe/9FMuze9YqBb2i9tubwwWy
+5mnjyhriRI4R06if3teC4W4lSQJWt4cyCE0OWqag9A+cWkqqqGcHwePTBzS8eNAf
+27YhSrOkkpLL2leWUJqq6I0tI9PPoJ2vIeRiicWIguTJWjVCS92hL29ahu4QSrsx
+BmCx1OUCFUBpW8V2sMDO+cYJ7QoHC+4xytBzkuWgN7styjfnvdt+GpgYAcfsvDVp
+0UBhEL82kUTMk7YSA7hvByOWzfFa9IxKhqEQbowifxSHU9W/qIx0oRZuBiqannIH
+hcQpSB9towmM/RUVjVF0r8fIQIJDF//vxYpxTTibXm5WGpneESDPljIzkyKljJfH
+IMqztr6BdVFiKO+QMPPZw78s9DyKk7Au4styxJ/qs6D1Wk4ZM6J04NpqXXoZVO1p
+CZC6VrLilj4auar5pGo/QLET1SbCDD977TkZZCgJgPbrMq1DfnbmnAX4uM1wXl72
+kI4nHJhj5/r346ECAwEAAaMyMDAwDwYDVR0RBAgwBocEwKhkZDAdBgNVHQ4EFgQU
+CPNHn5GXntQy/Ly6W/d0oG5S1dcwDQYJKoZIhvcNAQELBQADggIBAFWL8o+mHz9o
+q5F2L/GZpn4tH+nvvkS59MwXXwcbUdkBXCARQyc4CVrkmWrIek/TxZqA9YY6h/e4
+HyHGnehRsEMb/6zSfT8rHup2EwzdAWNxyVzlftAdLapo8OIy/QJLzpfSqJjQwegx
+uxGkORoZheI60NLCQ9pqU+sJWFrBShsx3dDHi5FVHAxWgcI/rjtVZaNl+LW9tbO6
++8zvsum78RfZ4+51AY6rMBbaRHx57s69vwKdEKaFRG0Ru5o+8WKI+KrO0sah3MjQ
+9pQ1e0viC5kUZwgzResYQ4+ecOyXYaMSOdQ4MCVH/8+yWl4GgpBARpqJgynJ8zZq
+BnEm1v5D6QzFrxhJRjqxoq0T040ShfjLXVmzw/OG8zV0DbdyBj7JcE+IyANuz1qS
+Dedm4OEvERyoEE5rPs1kQ4LPRYDlFixQPqv9dY1jZsK+DgO2bK8DRWSqOLe55sQ2
+Fa1Iu5a+9hKaIoDLsHlVEF93vMABu2Q77Uvo8ywN20tQ+UTkl67GER5R4d+Yc6n8
+vzmrZ32b8d9vXN0JdjOsLSTGh0a9fCfMdR6RXE9WevG77Ihlpa4W3KwrDsojHClL
+lsNsbjzUHo/YWecZaznja5VwJvqCn4IwobdFcr359N4XnZgya+XO1VUZQfn6eMRL
+TGdxDCX0NiprqAeBpnITyV0Vx/2wf0b/
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=CN=192.168.100.100
+issuer=CN=192.168.100.100
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 2068 bytes and written 366 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Server public key is 4096 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_128_GCM_SHA256
+    Session-ID: ED587A9E7C179652A3C36F9936F6BCD34A70D818D7503897EA6C968BB7E51479
+    Session-ID-ctx: 
+    Resumption PSK: 98873227F5009F5F8B9DE5B688AD3BC7EB277A7EF266AE99F6FA40E16BF0B762
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 604800 (seconds)
+    TLS session ticket:
+    0000 - eb f6 09 27 db dd a4 d5-fb 50 c2 cd 60 04 7b 14   ...'.....P..`.{.
+    0010 - 51 cc 8c dd 03 f4 63 cc-86 22 25 23 0c 10 b8 d1   Q.....c.."%#....
+    0020 - 38 6a 6f 27 bc da 3d 5e-31 e0 2f 55 44 21 c6 3e   8jo'..=^1./UD!.>
+    0030 - 58 88 a5 37 f0 34 85 ec-3c 79 d5 be 61 45 dd 50   X..7.4..<y..aE.P
+    0040 - f9 3a c7 02 44 37 be bc-14 10 66 b1 61 a0 54 f9   .:..D7....f.a.T.
+    0050 - 28 93 c9 58 de f6 15 52-60 32 8a 1a 9d 34 e9 4d   (..X...R`2...4.M
+    0060 - cb 1e 42 33 02 4a 7d 2a-bd 39 84 43 47 ff 7f 8b   ..B3.J}*.9.CG...
+    0070 - 3d                                                =
+
+    Start Time: 1750129002
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+^C
+[apohorai@pohakubemaster ~]$ vim registry.crt
+[apohorai@pohakubemaster ~]$ sudo cp registry.crt /etc/pki/ca-trust/source/anchors/
+[sudo] password for apohorai: 
+[apohorai@pohakubemaster ~]$ sudo update-ca-trust
+[apohorai@pohakubemaster ~]$ sudo systemctl restart docker
+[apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T23:07:19-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc000352e00}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+[apohorai@pohakubemaster ~]$ sudo vim /etc/docker/daemon.json
+[apohorai@pohakubemaster ~]$ sudo systemctl restart docker
+[apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T23:08:05-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc00034aa80}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+[apohorai@pohakubemaster ~]$ sudo vim /etc/docker/daemon.json
+[apohorai@pohakubemaster ~]$ sudo systemctl restart docker
+[apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T23:09:09-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc00046c1c0}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+[apohorai@pohakubemaster ~]$ [apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T23:09:09-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc00046c1c0}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+-bash: [apohorai@pohakubemaster: command not found
+-bash: Password:: command not found
+-bash: Get: command not found
+[apohorai@pohakubemaster ~]$ openssl x509 -in registry.crt -text -noout
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            24:a5:4d:de:f6:15:03:29:5a:2e:5b:ec:6f:a5:b9:37:b7:9c:2a:1b
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=192.168.100.100
+        Validity
+            Not Before: Jun 17 02:52:31 2025 GMT
+            Not After : Jun 17 02:52:31 2026 GMT
+        Subject: CN=192.168.100.100
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+                Modulus:
+                    00:bf:30:22:7f:86:fc:80:2c:22:1c:56:16:45:91:
+                    15:ef:00:45:b5:d8:b0:cb:c6:d0:6d:cc:08:73:82:
+                    03:ee:e7:76:b4:f4:69:fa:be:13:35:8d:bd:ac:5c:
+                    74:92:62:d2:0d:82:fb:7d:d1:24:31:e9:46:7c:ff:
+                    b6:19:19:12:18:7b:05:e3:af:fd:60:4d:c3:5a:6d:
+                    b1:66:ce:21:76:93:4f:d8:cf:4f:29:13:ba:47:41:
+                    fc:3e:c4:68:96:2b:4b:22:8f:45:88:49:8b:ef:97:
+                    33:0a:6e:99:50:0e:c8:97:94:b6:0d:fe:8a:cf:2b:
+                    8c:0d:a5:64:61:15:1a:fd:2c:ef:dd:ec:36:d2:b3:
+                    ef:90:f9:65:7a:29:d6:bf:d3:c4:a0:97:ab:31:ef:
+                    fd:14:cb:b3:7b:d6:2a:05:bd:a2:f6:db:9b:c3:05:
+                    b2:e6:69:e3:ca:1a:e2:44:8e:11:d3:a8:9f:de:d7:
+                    82:e1:6e:25:49:02:56:b7:87:32:08:4d:0e:5a:a6:
+                    a0:f4:0f:9c:5a:4a:aa:a8:67:07:c1:e3:d3:07:34:
+                    bc:78:d0:1f:db:b6:21:4a:b3:a4:92:92:cb:da:57:
+                    96:50:9a:aa:e8:8d:2d:23:d3:cf:a0:9d:af:21:e4:
+                    62:89:c5:88:82:e4:c9:5a:35:42:4b:dd:a1:2f:6f:
+                    5a:86:ee:10:4a:bb:31:06:60:b1:d4:e5:02:15:40:
+                    69:5b:c5:76:b0:c0:ce:f9:c6:09:ed:0a:07:0b:ee:
+                    31:ca:d0:73:92:e5:a0:37:bb:2d:ca:37:e7:bd:db:
+                    7e:1a:98:18:01:c7:ec:bc:35:69:d1:40:61:10:bf:
+                    36:91:44:cc:93:b6:12:03:b8:6f:07:23:96:cd:f1:
+                    5a:f4:8c:4a:86:a1:10:6e:8c:22:7f:14:87:53:d5:
+                    bf:a8:8c:74:a1:16:6e:06:2a:9a:9e:72:07:85:c4:
+                    29:48:1f:6d:a3:09:8c:fd:15:15:8d:51:74:af:c7:
+                    c8:40:82:43:17:ff:ef:c5:8a:71:4d:38:9b:5e:6e:
+                    56:1a:99:de:11:20:cf:96:32:33:93:22:a5:8c:97:
+                    c7:20:ca:b3:b6:be:81:75:51:62:28:ef:90:30:f3:
+                    d9:c3:bf:2c:f4:3c:8a:93:b0:2e:e2:cb:72:c4:9f:
+                    ea:b3:a0:f5:5a:4e:19:33:a2:74:e0:da:6a:5d:7a:
+                    19:54:ed:69:09:90:ba:56:b2:e2:96:3e:1a:b9:aa:
+                    f9:a4:6a:3f:40:b1:13:d5:26:c2:0c:3f:7b:ed:39:
+                    19:64:28:09:80:f6:eb:32:ad:43:7e:76:e6:9c:05:
+                    f8:b8:cd:70:5e:5e:f6:90:8e:27:1c:98:63:e7:fa:
+                    f7:e3:a1
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Alternative Name: 
+                IP Address:192.168.100.100
+            X509v3 Subject Key Identifier: 
+                08:F3:47:9F:91:97:9E:D4:32:FC:BC:BA:5B:F7:74:A0:6E:52:D5:D7
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        55:8b:f2:8f:a6:1f:3f:68:ab:91:76:2f:f1:99:a6:7e:2d:1f:
+        e9:ef:be:44:b9:f4:cc:17:5f:07:1b:51:d9:01:5c:20:11:43:
+        27:38:09:5a:e4:99:6a:c8:7a:4f:d3:c5:9a:80:f5:86:3a:87:
+        f7:b8:1f:21:c6:9d:e8:51:b0:43:1b:ff:ac:d2:7d:3f:2b:1e:
+        ea:76:13:0c:dd:01:63:71:c9:5c:e5:7e:d0:1d:2d:aa:68:f0:
+        e2:32:fd:02:4b:ce:97:d2:a8:98:d0:c1:e8:31:bb:11:a4:39:
+        1a:19:85:e2:3a:d0:d2:c2:43:da:6a:53:eb:09:58:5a:c1:4a:
+        1b:31:dd:d0:c7:8b:91:55:1c:0c:56:81:c2:3f:ae:3b:55:65:
+        a3:65:f8:b5:bd:b5:b3:ba:fb:cc:ef:b2:e9:bb:f1:17:d9:e3:
+        ee:75:01:8e:ab:30:16:da:44:7c:79:ee:ce:bd:bf:02:9d:10:
+        a6:85:44:6d:11:bb:9a:3e:f1:62:88:f8:aa:ce:d2:c6:a1:dc:
+        c8:d0:f6:94:35:7b:4b:e2:0b:99:14:67:08:33:45:eb:18:43:
+        8f:9e:70:ec:97:61:a3:12:39:d4:38:30:25:47:ff:cf:b2:5a:
+        5e:06:82:90:40:46:9a:89:83:29:c9:f3:36:6a:06:71:26:d6:
+        fe:43:e9:0c:c5:af:18:49:46:3a:b1:a2:ad:13:d3:8d:12:85:
+        f8:cb:5d:59:b3:c3:f3:86:f3:35:74:0d:b7:72:06:3e:c9:70:
+        4f:88:c8:03:6e:cf:5a:92:0d:e7:66:e0:e1:2f:11:1c:a8:10:
+        4e:6b:3e:cd:64:43:82:cf:45:80:e5:16:2c:50:3e:ab:fd:75:
+        8d:63:66:c2:be:0e:03:b6:6c:af:03:45:64:aa:38:b7:b9:e6:
+        c4:36:15:ad:48:bb:96:be:f6:12:9a:22:80:cb:b0:79:55:10:
+        5f:77:bc:c0:01:bb:64:3b:ed:4b:e8:f3:2c:0d:db:4b:50:f9:
+        44:e4:97:ae:c6:11:1e:51:e1:df:98:73:a9:fc:bf:39:ab:67:
+        7d:9b:f1:df:6f:5c:dd:09:76:33:ac:2d:24:c6:87:46:bd:7c:
+        27:cc:75:1e:91:5c:4f:56:7a:f1:bb:ec:88:65:a5:ae:16:dc:
+        ac:2b:0e:ca:23:1c:29:4b:96:c3:6c:6e:3c:d4:1e:8f:d8:59:
+        e7:19:6b:39:e3:6b:95:70:26:fa:82:9f:82:30:a1:b7:45:72:
+        bd:f9:f4:de:17:9d:98:32:6b:e5:ce:d5:55:19:41:f9:fa:78:
+        c4:4b:4c:67:71:0c:25:f4:36:2a:6b:a8:07:81:a6:72:13:c9:
+        5d:15:c7:fd:b0:7f:46:ff
+[apohorai@pohakubemaster ~]$ 
+            X509v3 Subject Key Identifier: 
+                08:F3:47:9F:91:97:9E:D4:32:FC:BC:BA:5B:F7:74:A0:6E:52:D5:D7
+    Signature Algorithm: sha256WithRSAEncryption
+-bash: X509v3: command not found
+-bash: 08:F3:47:9F:91:97:9E:D4:32:FC:BC:BA:5B:F7:74:A0:6E:52:D5:D7: command not found
+-bash: Signature: command not found
+[apohorai@pohakubemaster ~]$ curl -v https://192.168.100.100:32443/v2/
+*   Trying 192.168.100.100:32443...
+* Connected to 192.168.100.100 (192.168.100.100) port 32443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+* TLSv1.0 (OUT), TLS header, Certificate Status (22):
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS header, Finished (20):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (OUT), TLS header, Unknown (21):
+* TLSv1.3 (OUT), TLS alert, unknown CA (560):
+* SSL certificate problem: self-signed certificate
+* Closing connection 0
+curl: (60) SSL certificate problem: self-signed certificate
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+[apohorai@pohakubemaster ~]$ sudo journalctl -u docker.service
+Jun 05 07:47:37 pohakubemaster systemd[1]: Starting Docker Application Container Engine...
+Jun 05 07:47:37 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:37.944280385-04:00" level=info msg="Starting up"
+Jun 05 07:47:37 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:37.949851978-04:00" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+Jun 05 07:47:38 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:38.008064795-04:00" level=info msg="Creating a containerd client" address=/run/containerd/containerd.sock timeout=1m0s
+Jun 05 07:47:38 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:38.086872279-04:00" level=info msg="[graphdriver] using prior storage driver: overlay2"
+Jun 05 07:47:38 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:38.233333314-04:00" level=info msg="Loading containers: start."
+Jun 05 07:47:39 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:39.027890817-04:00" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count f9f67c38d5d14b5c>
+Jun 05 07:47:39 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:39.104488066-04:00" level=info msg="Loading containers: done."
+Jun 05 07:47:39 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:39.127478986-04:00" level=info msg="Docker daemon" commit=01f442b containerd-snapshotter=false storage-driver=overlay2 version=28.1.1
+Jun 05 07:47:39 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:39.127775684-04:00" level=info msg="Initializing buildkit"
+Jun 05 07:47:39 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:39.563955590-04:00" level=info msg="Completed buildkit initialization"
+Jun 05 07:47:39 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:39.606174703-04:00" level=info msg="Daemon has completed initialization"
+Jun 05 07:47:39 pohakubemaster dockerd[1053]: time="2025-06-05T07:47:39.606402193-04:00" level=info msg="API listen on /run/docker.sock"
+Jun 05 07:47:39 pohakubemaster systemd[1]: Started Docker Application Container Engine.
+Jun 11 22:13:29 pohakubemaster dockerd[1053]: time="2025-06-11T22:13:29.153974732-04:00" level=info msg="ignoring event" container=1fe2f0263a867cd07b5a4016ad8e86a91abe3de2e8e7166692e442aff9f74454 module=libcontaine>
+Jun 11 22:19:43 pohakubemaster dockerd[1053]: time="2025-06-11T22:19:43.502809357-04:00" level=info msg="ignoring event" container=aae04aedc848401086f07f12a702cb399cdba622274c66a74cfcbfbc7a011e46 module=libcontaine>
+Jun 11 22:26:22 pohakubemaster dockerd[1053]: time="2025-06-11T22:26:22.484670356-04:00" level=info msg="ignoring event" container=1fc1e663eb9ed1df3ba48eaa6027065388c6f890fc71af7efd86146f4d659284 module=libcontaine>
+Jun 11 22:27:48 pohakubemaster dockerd[1053]: time="2025-06-11T22:27:48.689904255-04:00" level=info msg="ignoring event" container=2d9c5d2659b72850fab3701235c54dbe228383c158b22eeb7fb756e0f7f9d09e module=libcontaine>
+Jun 12 05:43:14 pohakubemaster dockerd[1053]: time="2025-06-12T05:43:14.307081457-04:00" level=info msg="ignoring event" container=86aaca61dc30ab9d0d7e4aea10153c0b3afc980503efa1c77aee299b25c462e2 module=libcontaine>
+Jun 12 05:45:23 pohakubemaster dockerd[1053]: time="2025-06-12T05:45:23.491953041-04:00" level=info msg="ignoring event" container=fd7ca13d55232920b46c23aa8de681c16c44fc7ecb581b0f2885b5ede4d3ba75 module=libcontaine>
+Jun 16 05:56:30 pohakubemaster dockerd[1053]: time="2025-06-16T05:56:30.248421836-04:00" level=error msg=/moby.buildkit.v1.frontend.LLBBridge/Solve error="rpc error: code = Unknown desc = failed to read dockerfile:>
+Jun 16 05:56:30 pohakubemaster dockerd[1053]: time="2025-06-16T05:56:30.342462325-04:00" level=error msg=/moby.buildkit.v1.Control/Solve error="rpc error: code = Unknown desc = failed to read dockerfile: open Docke>
+Jun 16 05:57:07 pohakubemaster dockerd[1053]: 2025/06/16 05:57:07 http2: server: error reading preface from client @: read unix /run/docker.sock->@: read: connection reset by peer
+Jun 16 05:57:10 pohakubemaster dockerd[1053]: time="2025-06-16T05:57:10.787804057-04:00" level=error msg=/moby.buildkit.v1.Control/Solve error="rpc error: code = Unknown desc = failed to compute cache key: failed t>
+Jun 16 06:00:10 pohakubemaster dockerd[1053]: time="2025-06-16T06:00:10.743583478-04:00" level=warning msg="failed to read oom_kill event" error="open /sys/fs/cgroup/system.slice:docker:iuyhc08lon0ll5upp5vaobep6/me>
+Jun 16 06:00:12 pohakubemaster dockerd[1053]: time="2025-06-16T06:00:12.219402116-04:00" level=error msg=/moby.buildkit.v1.Control/Solve error="rpc error: code = Unknown desc = process \"/bin/sh -c git clone https:>
+Jun 16 06:01:32 pohakubemaster dockerd[1053]: 2025/06/16 06:01:32 http2: server: error reading preface from client @: read unix /run/docker.sock->@: read: connection reset by peer
+Jun 16 06:21:21 pohakubemaster dockerd[1053]: time="2025-06-16T06:21:21.805280038-04:00" level=info msg="Attempting next endpoint for push after error: Get \"https://192.168.100.100:32000/v2/\": http: server gave H>
+Jun 16 06:23:28 pohakubemaster dockerd[1053]: time="2025-06-16T06:23:28.827239588-04:00" level=info msg="Processing signal 'terminated'"
+Jun 16 06:23:28 pohakubemaster systemd[1]: Stopping Docker Application Container Engine...
+Jun 16 06:23:28 pohakubemaster dockerd[1053]: time="2025-06-16T06:23:28.849069315-04:00" level=info msg="stopping event stream following graceful shutdown" error="<nil>" module=libcontainerd namespace=moby
+Jun 16 06:23:28 pohakubemaster dockerd[1053]: time="2025-06-16T06:23:28.852594377-04:00" level=info msg="Daemon shutdown complete"
+Jun 16 06:23:28 pohakubemaster systemd[1]: docker.service: Deactivated successfully.
+Jun 16 06:23:28 pohakubemaster systemd[1]: Stopped Docker Application Container Engine.
+Jun 16 06:23:28 pohakubemaster systemd[1]: docker.service: Consumed 3min 29.253s CPU time.
+Jun 16 06:23:28 pohakubemaster systemd[1]: Starting Docker Application Container Engine...
+Jun 16 06:23:29 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:29.096852944-04:00" level=info msg="Starting up"
+Jun 16 06:23:29 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:29.099615423-04:00" level=info msg="OTEL tracing is not configured, using no-op tracer provider"
+Jun 16 06:23:29 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:29.120134467-04:00" level=info msg="Creating a containerd client" address=/run/containerd/containerd.sock timeout=1m0s
+Jun 16 06:23:29 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:29.171107594-04:00" level=info msg="[graphdriver] using prior storage driver: overlay2"
+Jun 16 06:23:29 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:29.498605827-04:00" level=info msg="Loading containers: start."
+Jun 16 06:23:30 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:30.144229129-04:00" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint_count 2a68d95ea8657>
+Jun 16 06:23:30 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:30.227492539-04:00" level=info msg="Loading containers: done."
+Jun 16 06:23:30 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:30.247625746-04:00" level=info msg="Docker daemon" commit=01f442b containerd-snapshotter=false storage-driver=overlay2 version=28.1.1
+Jun 16 06:23:30 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:30.247757132-04:00" level=info msg="Initializing buildkit"
+Jun 16 06:23:30 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:30.849558759-04:00" level=info msg="Completed buildkit initialization"
+Jun 16 06:23:30 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:30.867937317-04:00" level=info msg="Daemon has completed initialization"
+Jun 16 06:23:30 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:30.868431568-04:00" level=info msg="API listen on /run/docker.sock"
+Jun 16 06:23:30 pohakubemaster systemd[1]: Started Docker Application Container Engine.
+Jun 16 06:23:44 pohakubemaster dockerd[1058501]: time="2025-06-16T06:23:44.303722882-04:00" level=info msg="Attempting next endpoint for push after error: Get \"https://192.168.100.100:32000/v2/\": http: server gav>
+Jun 16 07:57:01 pohakubemaster dockerd[1058501]: time="2025-06-16T07:57:01.916195232-04:00" level=error msg="Failed to get event" error="rpc error: code = Unavailable desc = error reading from server: EOF" module=l>
+Jun 16 07:57:01 pohakubemaster dockerd[1058501]: time="2025-06-16T07:57:01.916821317-04:00" level=info msg="Waiting for containerd to be ready to restart event processing" module=libcontainerd namespace=moby
+Jun 16 07:57:01 pohakubemaster dockerd[1058501]: time="2025-06-16T07:57:01.918088799-04:00" level=error msg="Failed to get event" error="rpc error: code = Unavailable desc = error reading from server: EOF" module=l>
+[apohorai@pohakubemaster ~]$ ^C
+[apohorai@pohakubemaster ~]$ g="Loading contain^C
+[apohorai@pohakubemaster ~]$ curl --cacert registry.crt -v https://192.168.100.100:32443/v2/
+*   Trying 192.168.100.100:32443...
+* Connected to 192.168.100.100 (192.168.100.100) port 32443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+*  CAfile: registry.crt
+* TLSv1.0 (OUT), TLS header, Certificate Status (22):
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS header, Finished (20):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+* TLSv1.2 (OUT), TLS header, Finished (20):
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (OUT), TLS header, Unknown (23):
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=192.168.100.100
+*  start date: Jun 17 02:52:31 2025 GMT
+*  expire date: Jun 17 02:52:31 2026 GMT
+*  subjectAltName: host "192.168.100.100" matched cert's IP address!
+*  issuer: CN=192.168.100.100
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* TLSv1.2 (OUT), TLS header, Unknown (23):
+* TLSv1.2 (OUT), TLS header, Unknown (23):
+* TLSv1.2 (OUT), TLS header, Unknown (23):
+* Using Stream ID: 1 (easy handle 0x5607686d4660)
+* TLSv1.2 (OUT), TLS header, Unknown (23):
+> GET /v2/ HTTP/2
+> Host: 192.168.100.100:32443
+> user-agent: curl/7.76.1
+> accept: */*
+> 
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+* TLSv1.2 (OUT), TLS header, Unknown (23):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+* TLSv1.2 (IN), TLS header, Unknown (23):
+< HTTP/2 401 
+< content-type: application/json; charset=utf-8
+< docker-distribution-api-version: registry/2.0
+< www-authenticate: Basic realm="Registry Realm"
+< x-content-type-options: nosniff
+< content-length: 87
+< date: Tue, 17 Jun 2025 03:14:09 GMT
+< 
+* TLSv1.2 (IN), TLS header, Unknown (23):
+{"errors":[{"code":"UNAUTHORIZED","message":"authentication required","detail":null}]}
+* Connection #0 to host 192.168.100.100 left intact
+[apohorai@pohakubemaster ~]$ docker login https://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T23:15:39-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc00038a700}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+[apohorai@pohakubemaster ~]$ docker login http://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T23:15:55-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc0000ada40}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+[apohorai@pohakubemaster ~]$ sudo ls -latr /etc/pki/ca-trust/source/anchors/
+total 8
+drwxr-xr-x. 4 root root   80 May 17 21:45 ..
+-rw-r--r--. 1 root root 1777 Jun 16 22:53 tls.crt
+-rw-r--r--. 1 root root 1777 Jun 16 23:06 registry.crt
+drwxr-xr-x. 2 root root   41 Jun 16 23:06 .
+[apohorai@pohakubemaster ~]$ sudo rm /etc/pki/ca-trust/source/anchors/tls.crt 
+[apohorai@pohakubemaster ~]$ docker login http://192.168.100.100:32443 -u apohorai
+Password: 
+time="2025-06-16T23:18:41-04:00" level=info msg="Error logging in to endpoint, trying next endpoint" endpoint="{false https://192.168.100.100:32443 false false false 0xc0002aa1c0}" error="Get \"https://192.168.100.100:32443/v2/\": tls: failed to verify certificate: x509: certificate signed by unknown authority"
+Get "https://192.168.100.100:32443/v2/": tls: failed to verify certificate: x509: certificate signed by unknown authority
+[apohorai@pohakubemaster ~]$ sudo su -
+[root@pohakubemaster ~]# cd /etc/docker/
+[root@pohakubemaster docker]# ls
+daemon.json
+[root@pohakubemaster docker]# 
+logout
+[apohorai@pohakubemaster ~]$ sudo mkdir -p /etc/docker/certs.d/192.168.100.100:32443
+[apohorai@pohakubemaster ~]$ sudo cp registry.crt /etc/docker/certs.d/192.168.100.100:32443/ca.crt
+[apohorai@pohakubemaster ~]$ sudo systemctl restart docker
+[apohorai@pohakubemaster ~]$ docker login http://192.168.100.100:32443 -u apohorai
+Password: 
+
+WARNING! Your credentials are stored unencrypted in '/home/apohorai/.docker/config.json'.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/go/credential-store/
+
+Login Succeeded
+[apohorai@pohakubemaster ~]$ 
