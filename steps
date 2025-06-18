@@ -64,7 +64,7 @@ sudo systemctl disable firewalld
 sudo systemctl enable kubelet
 
 sudo kubeadm config images pull
-sudo kubectl init
+sudo kubeadm init
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
