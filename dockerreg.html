@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Self-Signed Docker Registry Setup</title>
+</head>
+<body>
+  <h1>Self-Signed Docker Registry Setup on 192.168.0.100</h1>
+
+  <h2>1. Generate Self-Signed TLS Certificate</h2>
+  <pre><code>mkdir -p ~/docker-registry/certs
+
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout ~/docker-registry/certs/domain.key \
+  -x509 -days 365 -out ~/docker-registry/certs/domain.crt \
+  -subj "/CN=192.168.0.100" \
+  -addext "subjectAltName=IP:192.168.0.100"
+</code></pre>
+  <p><strong>Note:</strong> <code>subjectAltName</code> is required by Docker to avoid legacy CN TLS errors.</p>
+
+  <h2>2. Start Docker Registry Container</h2>
+  <p>If a container already exists:</p>
+  <pre><code>sudo docker rm -f registry</code></pre>
+
+  <p>Then run the registry:</p>
+  <pre><code>sudo docker run -d \
+  --restart=always \
+  --name registry \
+  -v ~/docker-registry/data:/var/lib/registry \
+  -v ~/docker-registry/certs:/certs \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
+  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
+  -p 5000:5000 \
+  registry:2
+</code></pre>
+
+  <h2>3. Trust the Self-Signed Certificate (on client)</h2>
+  <pre><code>sudo mkdir -p /etc/docker/certs.d/192.168.0.100:5000
+sudo cp ~/docker-registry/certs/domain.crt /etc/docker/certs.d/192.168.0.100:5000/ca.crt
+sudo systemctl restart docker
+</code></pre>
+
+  <h2>4. Push and Pull an Image</h2>
+  <pre><code>sudo docker pull alpine
+sudo docker tag alpine 192.168.0.100:5000/alpine
+sudo docker push 192.168.0.100:5000/alpine
+</code></pre>
+
+  <h2>5. Verify Registry is Working</h2>
+  <pre><code>curl -k https://192.168.0.100:5000/v2/</code></pre>
+  <p>Expected output: <code>{}</code></p>
+
+  <hr>
+  <p><strong>Optional:</strong> Add basic auth, reverse proxy with NGINX, or deploy in Kubernetes.</p>
+</body>
+</html>
