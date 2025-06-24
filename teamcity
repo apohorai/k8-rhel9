@@ -1,0 +1,2164 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+  labels:
+    app: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      # Node selector to pin to specific node if needed
+      nodeSelector:
+        kubernetes.io/hostname: pohakubenode1
+      
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 8.8.8.8
+          - 8.8.4.4
+      
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        ports:
+        - containerPort: 8111
+        env:
+        - name: JAVA_OPTS
+          value: "-Djavax.net.ssl.trustStore=/etc/teamcity-truststore/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+        volumeMounts:
+        - name: data
+          mountPath: /data/teamcity_server/datadir
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050
+        - name: teamcity-truststore
+          mountPath: /etc/teamcity-truststore
+      
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: teamcity-data
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+      - name: teamcity-truststore
+        configMap:
+          name: teamcity-truststore
+          items:
+          - key: custom-truststore.jks
+            path: custom-truststore.jks
+
+
+
+kubectl exec -it teamcity-server-[NEW_POD_ID] -- keytool -list -keystore /etc/teamcity-truststore/custom-truststore.jks -storepass changeit
+kubectl create configmap teamcity-truststore --from-file=/tmp/custom-truststore.jks
+
+Step 1: Create a Custom Trust Store
+
+env:
+  - name: JAVA_OPTS
+    value: "-Djavax.net.ssl.trustStore=/tmp/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.
+100:30050/ca.crt -alias "docker-registry" -keystore /tmp/custom-truststore.jks -storepass changeit
+/opt/java/openjdk/lib/security/cacerts
+
+readlink -f $(which java)
+
+kubectl exec -it teamcity-server-9f9cfbc55-2xcl2 -- sh
+
+
+
+volumeMounts:
+- name: registry-ca
+  mountPath: /etc/docker/certs.d/192.168.100.100:30050/ca.crt
+  subPath: ca.crt
+
+
+kubectl create secret generic registry-ca --from-file=ca.crt=/path/to/your/ca.crt
+kubectl get secret registry-ca -o jsonpath='{.data.ca\.crt}' | base64 --decode
+
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts -storepass changeit -noprompt
+
+
+keytool -importcert -trustcacerts -file \
+  /etc/docker/certs.d/192.168.100.100\:30050/ca.crt \
+  -alias "docker-registry" \
+  -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts \
+  -storepass changeit -noprompt
+
+      volumeMounts:
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050/  # Remove subPath
+
+kubectl create secret generic registry-ca --from-file=ca.crt
+!!!!!!!!!!!!!!!!!!!
+kubectl create configmap teamcity-truststore --from-file=/tmp/custom-truststore.jks
+
+
+
+
+I have a docker registry with self signed certificate and a teamcity server running on kubernetes. From the node I can reach the registry using this cert: [apohorai@pohakubenode2 ~]\$ cat /etc/docker/certs.d/192.168.100.100:30050/ca.crt
+-----BEGIN CERTIFICATE-----
+MIIFJjCCAw6gAwIBAgIUHmuxJiUjKeWmeluWJe/4NC/vkGwwDQYJKoZIhvcNAQEL
+BQAwGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMB4XDTI1MDYyMzA2MzExOFoX
+DTI2MDYyMzA2MzExOFowGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMIICIjAN
+BgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAptKPfBt+y559hlqY7hFBGFh3Tkns
+pM/jP9Ts6LyMAaZfD9d6IqXkd++bRs8uez4X/V7i1b3kezcqspUN/Ewn1ECVPtpv
+Y55CTwkcoRahTqcJvUnk/Tf3q2i8ZOwEmhWibbt4bZEJWdzqMiSxZgujoBmvrqzT
+Z5nR81wiN2vuB+fNxhmc91DRs/0GXKaFLu0DqEHttZypCB6SzWPK0qLV61JFMf/F
+okAQJuddc6WTRgUi6aQ2okonOXeoAkEFlEXFRtGMXD2nKSq/UlPxMFoViGuBsrv6
+OS0WVMCXVG4CsuotQ/825HtwUqgZgntubPu517y+FOZ+WqEuiC1mzxVvnT1JuqmN
+k6gQJDt8veh27QzL+Un7jMhqvrfgMyP18ZLOzANqYYIzJQTnKloPsKw45QlnPQk+
+iQ+vW1i7T9LZ7GySMOAOP9LWk/1Ie+1OrfeNw/b/cTLDVOuR5il/c5jTvf7rXiLE
+6CKGYlF7bUXxnBH/gH15Eh5NPMFzCApLAIEOt8BQqNmiNEffkZ8QAvG58XEPn7lX
+DJSRM5vsYkNQBaHBCxdc/R5HWQCi5ALfLfsmTS/YEIv/rXTPH3N/kVoBVGOnhQw9
+MMSB5CXBsc2x76UYFA5aDxqudvLdOJEN3AAg/6hzYV64kN914jU7dM+N8SqYeP5j
+O7MBmqkrqyy2Ey8CAwEAAaNkMGIwHQYDVR0OBBYEFHqJQpn6vfw2A17bW5hxVlAO
+3ruSMB8GA1UdIwQYMBaAFHqJQpn6vfw2A17bW5hxVlAO3ruSMA8GA1UdEwEB/wQF
+MAMBAf8wDwYDVR0RBAgwBocEwKhkZDANBgkqhkiG9w0BAQsFAAOCAgEAeP/cWvig
+oANkftmrarBVDb3dn57g7foug3xitZlVwKNpbabESXkauxyGqPk04epCNQI752ej
+eGnHVnPjqwD+uJZqt01TZhWX2OEgiRYg71Q5ZWtl06KIwHBRjNKo2ea3RoTrOfkF
+C9rcRLoQkifqh7dzq6lDfKwsQVtotGpXYDSp8+cm0vO4bXSahIvAIwjDk026VgfM
+rYXbGTHdkNid0oZY5WDJ8mnyUysjcY/ooIDZyO2mS8GHpk3xQVhFzLW71LA3v+WR
+S5Z+W+oYaVKDpws46ntjWNO7h8Q1MtBW5PwkJS1IQ+ffVmGVFQ9bZslV91qwL3qD
+OCo8LhsVyXYGzjd6151GWhopo2XzziaRUEFre0ksRniN7RokD/Vhto/IvJJ1DVM5
+YbIouHE9mnksiUF+EvQPKn6pGe5/wiTMv5Pv0Iz1n6IedYCd8vLi6CJXLORJRkuI
+yrFxE/+O8FuuQICjhzC0lKpZeN9Z8jLT6/ZmpikgK8p/5ROUK0EVZCN3YdLIYvOD
+2uk5eV9pKi7NzVp88a+4k4a63cDx3xpmXxYwcVSHfNW5nRhVr1TgHpXQQ8Sp6Pw5
+FqW/+2a+ftGtHQjdS2Xt6gfH83UDWbMkmc/j4FzYS7moed47nX2sp7YfWpzxWy12
+bRExHIwYSR+/6bXHMNcJbb/VvK2cs1txXHY=
+-----END CERTIFICATE-----
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+To configure your TeamCity server running on Kubernetes to use a Docker registry with a self-signed certificate, you need to ensure that the certificate is properly recognized by the TeamCity server. Here are the steps you can follow:
+
+Step 1: Create a Kubernetes Secret for the Certificate
+Create a file named ca.crt and paste the contents of your self-signed certificate into it.
+
+Create a Kubernetes secret to store the certificate. You can do this using the following command:
+
+bash
+
+Run
+Copy code
+kubectl create secret generic registry-ca --from-file=ca.crt
+Step 2: Mount the Secret in the TeamCity Deployment
+You need to modify your TeamCity deployment to mount the secret containing the certificate. Here’s an example of how to do this in your deployment YAML file:
+
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      containers:
+      - name: teamcity-server
+        image: your-teamcity-image
+        volumeMounts:
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050
+          subPath: ca.crt
+      volumes:
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+Step 3: Configure Docker to Use the Certificate
+Ensure that Docker is configured to use the certificate. The certificate should be placed in the directory /etc/docker/certs.d/192.168.100.100:30050/ca.crt inside the TeamCity container.
+
+Restart the TeamCity server to apply the changes:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 4: Verify the Configuration
+After the TeamCity server has restarted, you can verify that it can access the Docker registry:
+
+Log into the TeamCity server and check the logs for any errors related to the Docker registry.
+
+Try to pull an image from the Docker registry to ensure that the self-signed certificate is being recognized correctly.
+
+Additional Notes
+Make sure that the IP address and port in the mount path match your Docker registry's address.
+If you encounter any issues, check the TeamCity server logs for more detailed error messages.
+You may also need to configure the Docker daemon on the TeamCity server if it is running in a different environment.
+By following these steps, you should be able to configure your TeamCity server to work with a Docker registry that uses a self-signed certificate.
+
+
+I've created the secret, modify my deployment file: [apohorai@pohakubemaster registry]\$ kubectl create secret generic registry-ca --from-file=registry.crt
+secret/registry-ca created
+[apohorai@pohakubemaster registry]\$ cd ..
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ ls
+agent                     auth-app-service.yaml  postgres-deployment.yaml  postgres-pv.yaml      postgres-service.yaml  registry                         teamcity-server-pv.yaml       vtam-deployment.yaml
+auth-app-deployment.yaml  auth-secrets.yaml      postgres-pvc.yaml         postgres-secret.yaml  README.md              teamcity-server-deployment.yaml  teamcity-server-service.yaml  vtam-service.yaml
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ vim teamcity-server-deployment.yaml
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ cat teamcity-server-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: teamcity-server
+spec:
+replicas: 1
+selector:
+matchLabels:
+app: teamcity-server
+template:
+metadata:
+labels:
+app: teamcity-server
+spec:
+dnsPolicy: "None"
+dnsConfig:
+nameservers:
+- 8.8.8.8
+- 8.8.4.4
+containers:
+- name: teamcity
+image: jetbrains/teamcity-server:latest
+ports:
+- containerPort: 8111
+volumeMounts:
+- name: data
+mountPath: /data/teamcity_server/datadir
+volumes:
+- name: data
+persistentVolumeClaim:
+claimName: teamcity-data
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+To modify your teamcity-server-deployment.yaml file to include the mounted secret for the self-signed certificate, you will need to add a volume for the secret and a corresponding volume mount in the container specification. Here’s how you can do it:
+
+Updated teamcity-server-deployment.yaml
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 8.8.8.8
+          - 8.8.4.4
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        ports:
+        - containerPort: 8111
+        volumeMounts:
+        - name: data
+          mountPath: /data/teamcity_server/datadir
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050
+          subPath: registry.crt
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: teamcity-data
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+Key Changes Made
+Added a Volume for the Secret:
+
+A new volume named registry-ca is added under the volumes section, which references the secret you created (registry-ca).
+Mounted the Secret in the Container:
+
+A new entry is added to the volumeMounts section of the container to mount the secret at the path /etc/docker/certs.d/192.168.100.100:30050. The subPath is set to registry.crt, which is the name of the file in the secret.
+Step 1: Apply the Changes
+After updating the deployment file, apply the changes using the following command:
+
+bash
+
+Run
+Copy code
+kubectl apply -f teamcity-server-deployment.yaml
+Step 2: Verify the Deployment
+Check the status of the deployment:
+
+bash
+
+Run
+Copy code
+kubectl get deployments
+Check the logs of the TeamCity server to ensure that it started correctly and can access the Docker registry:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Test pulling an image from your Docker registry to confirm that the self-signed certificate is being recognized.
+
+By following these steps, your TeamCity server should now be configured to use the self-signed certificate for the Docker registry.
+
+
+I wanna run this node only on pohakubenode1
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+To ensure that your TeamCity server deployment runs specifically on pohakubenode1, you can use Kubernetes node selectors or node affinity. Here’s how to modify your teamcity-server-deployment.yaml to include a node selector that targets pohakubenode1.
+
+Step 1: Update the Deployment with Node Selector
+You can add a nodeSelector field under the spec section of your deployment. Here’s how your updated teamcity-server-deployment.yaml would look:
+
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 8.8.8.8
+          - 8.8.4.4
+      nodeSelector:
+        kubernetes.io/hostname: pohakubenode1  # Specify the node here
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        ports:
+        - containerPort: 8111
+        volumeMounts:
+        - name: data
+          mountPath: /data/teamcity_server/datadir
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050
+          subPath: registry.crt
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: teamcity-data
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+Key Changes Made
+Added nodeSelector:
+The nodeSelector field is added to the spec section, specifying kubernetes.io/hostname: pohakubenode1. This ensures that the TeamCity server pod will only be scheduled on the node named pohakubenode1.
+Step 2: Apply the Changes
+After updating the deployment file, apply the changes using the following command:
+
+bash
+
+Run
+Copy code
+kubectl apply -f teamcity-server-deployment.yaml
+Step 3: Verify the Deployment
+Check the status of the deployment:
+
+bash
+
+Run
+Copy code
+kubectl get deployments
+Check the pods to ensure they are running on the correct node:
+
+bash
+
+Run
+Copy code
+kubectl get pods -o wide
+This command will show you the nodes on which the pods are running. Ensure that the TeamCity server pod is running on pohakubenode1.
+
+By following these steps, your TeamCity server should now be scheduled to run only on pohakubenode1.
+
+
+Test connection to https://192.168.100.100:30050/v2/ failed: An error occurred while trying to remove image from docker repo by url: https://192.168.100.100:30050/v2/: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+The error message you are encountering indicates that the Java application (in this case, TeamCity) is unable to establish a secure connection to your Docker registry because it does not trust the self-signed certificate. This is a common issue when using self-signed certificates, as they are not recognized by default.
+
+To resolve this issue, you need to ensure that the self-signed certificate is added to the Java trust store used by the TeamCity server. Here are the steps to do this:
+
+Step 1: Export the Self-Signed Certificate
+If you haven't already, export the self-signed certificate from your Docker registry. You can use the following command to save it to a file (if you haven't done this already):
+
+bash
+
+Run
+Copy code
+kubectl cp <pod-name>:/etc/docker/certs.d/192.168.100.100:30050/ca.crt ./registry.crt
+Step 2: Add the Certificate to the Java Trust Store
+Get the Java Home Path: First, you need to find the Java home path in your TeamCity server container. You can do this by running a shell in the TeamCity pod:
+
+bash
+
+Run
+Copy code
+kubectl exec -it <teamcity-pod-name> -- /bin/bash
+Once inside the pod, you can find the Java home path, typically it is located at /usr/lib/jvm/java-<version>.
+
+Import the Certificate: Use the keytool command to import the certificate into the Java trust store. The default trust store is usually located at $JAVA_HOME/lib/security/cacerts. The default password for the Java trust store is changeit.
+
+Run the following command inside the TeamCity pod:
+
+bash
+
+Run
+Copy code
+keytool -importcert -file /path/to/registry.crt -keystore $JAVA_HOME/lib/security/cacerts -alias registry-ca -storepass changeit -noprompt
+Replace /path/to/registry.crt with the actual path to your certificate file.
+
+Step 3: Restart the TeamCity Server
+After importing the certificate, you need to restart the TeamCity server for the changes to take effect:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 4: Verify the Connection
+Once the TeamCity server has restarted, try to connect to your Docker registry again. You can check the logs for any errors:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Additional Notes
+If you are using a custom Java trust store or a different path for the cacerts file, make sure to adjust the commands accordingly.
+If you encounter any issues with permissions while importing the certificate, ensure that you have the necessary permissions to modify the trust store.
+If you are using a different version of Java, the path to the cacerts file may vary, so make sure to check the correct location.
+By following these steps, you should be able to resolve the certificate trust issue and successfully connect to your Docker registry from the TeamCity server.
+
+
+[apohorai@pohakubemaster registry]\$ kubectl cp teamcity-server-59f74d886c-hqwhk:/etc/docker/certs.d/192.168.100.100:30050/ca.crt ./registry.crt
+tar: Removing leading `/' from member names
+tar: /etc/docker/certs.d/192.168.100.100:30050/ca.crt: Cannot stat[apohorai@pohakubemaster registry]\$
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+It looks like the kubectl cp command failed to copy the certificate because the file path wasn't found. Let's troubleshoot and fix this step by step.
+
+Step 1: Verify Certificate Inside the TeamCity Pod
+First, check if the certificate exists in the expected location inside the TeamCity pod.
+
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-59f74d886c-hqwhk -- \
+  ls -la /etc/docker/certs.d/192.168.100.100:30050/
+or (if the path contains an escaped colon):
+
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-59f74d886c-hqwhk -- \
+  ls -la /etc/docker/certs.d/192.168.100.100\:30050/
+✅ Expected Output:
+If the certificate was properly mounted, you should see:
+
+
+Run
+Copy code
+-rw-r--r-- 1 root root 1675 Jun 23 06:31 ca.crt
+❌ If it doesn't exist: The secret was not mounted correctly, so we need to fix the deployment first.
+
+Step 2: Fix the Mount Path (if certificate is missing)
+Your teamcity-server-deployment.yaml mounts the secret as registry.crt, but the Docker registry expects ca.crt. Update the deployment as follows:
+
+yaml
+
+Run
+Copy code
+      volumeMounts:
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050/  # Remove subPath
+✅ Why?
+
+Docker expects the certificate inside /etc/docker/certs.d/<registry_host>:<port>/ca.crt.
+The Kubernetes secret must be mounted without subPath to ensure ca.crt is created.
+🚀 Apply the change:
+
+bash
+
+Run
+Copy code
+kubectl apply -f teamcity-server-deployment.yaml
+Step 3: Verify the Certificate Mount
+After updating the deployment:
+
+Check the pod logs for errors:
+bash
+
+Run
+Copy code
+kubectl logs teamcity-server-59f74d886c-hqwhk
+Verify the mounted certificate:
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-59f74d886c-hqwhk -- \
+  cat /etc/docker/certs.d/192.168.100.100\:30050/ca.crt
+✅ You should see your same certificate content as before.
+Step 4: Add the Certificate to Java's TrustStore
+Even after fixing the mount, TeamCity (Java) still doesn't trust the certificate.
+
+Solution:
+
+Enter the pod shell:
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-59f74d886c-hqwhk -- /bin/bash
+Find JAVA_HOME:
+bash
+
+Run
+Copy code
+ls /usr/lib/jvm/
+(Typically /usr/lib/jvm/java-11-openjdk for TeamCity)
+Import the cert into the Java truststore (cacerts):
+bash
+
+Run
+Copy code
+keytool -importcert -trustcacerts -file \
+  /etc/docker/certs.d/192.168.100.100\:30050/ca.crt \
+  -alias "docker-registry" \
+  -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts \
+  -storepass changeit -noprompt
+✅ Success output:
+
+Run
+Copy code
+Certificate was added to keystore
+Restart the TeamCity server:
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 5: Test Again
+Wait for the new pod to start, then check the logs:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Now TeamCity should successfully connect to https://192.168.100.100:30050/v2/.
+
+Troubleshooting
+If still failing:
+
+Check the pod's /etc/hosts: Ensure 192.168.100.100 resolves.
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-59f74d886c-hqwhk -- cat /etc/hosts
+Test manually from pod:
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-59f74d886c-hqwhk -- curl -vk https://192.168.100.100:30050/v2/
+Should now return 200 OK.
+Final Fix Summary
+✅ Mount certificate without subPath to create ca.crt.
+✅ Import into Java truststore (cacerts).
+✅ Restart TeamCity.
+Let me know if you need adjustments! 🚀
+
+
+apohorai@pohakubemaster registry]\$ kubectl exec -it teamcity-server-59f74d886c-hqwhk -- sh
+\$ cd /etc/docker
+\$ ls
+certs.d
+\$ cd cer*
+\$ ls
+192.168.100.100:30050
+\$ cd 19*
+sh: 5: cd: can't cd to 192.168.100.100:30050
+\$ cd "192.168.100.100:30050"
+sh: 6: cd: can't cd to 192.168.100.100:30050
+\$ ls -la
+total 4
+drwxr-xr-x. 2 root root   35 Jun 24 02:03 .
+drwxr-xr-x. 3 root root   21 Jun 24 02:03 ..
+-rw-r--r--. 1 root root 1846 Jun 24 02:03 192.168.100.100:30050
+\$ rm "192.168.100.100:30050"
+rm: remove write-protected regular file '192.168.100.100:30050'? y
+rm: cannot remove '192.168.100.100:30050': Permission denied
+\$ sudo rm -rf 192.168.100.100:30050
+sh: 9: sudo: not found
+\$
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+It looks like the certificate file is being created with the name 192.168.100.100:30050 instead of ca.crt, which is causing issues when trying to access it. Additionally, you are encountering permission issues when trying to remove or modify the file.
+
+Step 1: Fix the Mount Path in the Deployment
+To ensure that the certificate is correctly mounted as ca.crt, you need to modify your deployment YAML file again. Here’s how to do it:
+
+Edit the teamcity-server-deployment.yaml file to mount the secret correctly:
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 8.8.8.8
+          - 8.8.4.4
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        ports:
+        - containerPort: 8111
+        volumeMounts:
+        - name: data
+          mountPath: /data/teamcity_server/datadir
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050/ca.crt  # Mount as ca.crt
+          subPath: registry.crt  # Use the correct subPath
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: teamcity-data
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+Step 2: Apply the Changes
+After updating the deployment file, apply the changes:
+
+bash
+
+Run
+Copy code
+kubectl apply -f teamcity-server-deployment.yaml
+Step 3: Verify the Certificate Mount
+Check the logs of the TeamCity server to ensure it started correctly:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Enter the TeamCity pod again:
+
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-59f74d886c-hqwhk -- sh
+Check the certificate path:
+
+bash
+
+Run
+Copy code
+ls -la /etc/docker/certs.d/192.168.100.100:30050/
+You should see ca.crt listed instead of 192.168.100.100:30050.
+
+Step 4: Import the Certificate into Java Trust Store
+If the certificate is now correctly mounted as ca.crt, you can proceed to import it into the Java trust store:
+
+Find the Java home path (if you haven't already):
+
+bash
+
+Run
+Copy code
+ls /usr/lib/jvm/
+Import the certificate:
+
+bash
+
+Run
+Copy code
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts -storepass changeit -noprompt
+Step 5: Restart the TeamCity Server
+After importing the certificate, restart the TeamCity server:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 6: Test the Connection Again
+Once the TeamCity server has restarted, check the logs again and test the connection to your Docker registry.
+
+Summary
+Ensure the certificate is mounted as ca.crt.
+Import the certificate into the Java trust store.
+Restart the TeamCity server and verify the connection.
+Let me know if you encounter any further issues!
+
+
+use only on pohakubenode1
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+Assigning Pods to Nodes - Kubernetes
+
+
+kubernetes
+Avoiding kubernetes scheduler to run all pods in single node of ...
+
+
+stackoverflow
+How can I set up Deployment to run at least one pod on each node?
+
+
+devops.stackexchange
+Kubernetes Scheduler
+
+
+kubernetes
+To schedule a Kubernetes deployment to run only on a specific node, you can use Node Affinity or Node Selector. By labeling the node pohakubenode1 and specifying that label in your deployment configuration, you can ensure that the pods are scheduled exclusively on that node.
+
+Step 1: Label the Node
+First, you need to label the node pohakubenode1. Run the following command:
+
+bash
+
+Run
+Copy code
+kubectl label nodes pohakubenode1 mylabel=enabled
+Step 2: Update Your Deployment YAML
+Next, modify your deployment YAML file to include the nodeSelector that matches the label you just added. Here’s an example:
+
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      nodeSelector:
+        mylabel: enabled  # Ensure pods are scheduled on pohakubenode1
+      containers:
+      - name: my-container
+        image: my-image:latest
+Step 3: Apply the Changes
+After updating the deployment file, apply the changes:
+
+bash
+
+Run
+Copy code
+kubectl apply -f my-app-deployment.yaml
+Step 4: Verify Pod Scheduling
+To confirm that the pods are scheduled on pohakubenode1, run:
+
+bash
+
+Run
+Copy code
+kubectl get pods -o wide
+Check the NODE column to ensure that the pods are running on pohakubenode1.
+
+Summary
+Label the node pohakubenode1 with a specific key-value pair.
+Update your deployment to include a nodeSelector that matches the label.
+Apply the changes and verify that the pods are scheduled correctly.
+Let me know if you need further assistance!
+
+
+hardcode it
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+To hardcode your TeamCity deployment to run only on pohakubenode1, you can use nodeName in the pod spec. This bypasses the scheduler and forces Kubernetes to place the pod on the specified node.
+
+Updated teamcity-server-deployment.yaml
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      nodeName: pohakubenode1  # Hardcoded node assignment
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 8.8.8.8
+          - 8.8.4.4
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        ports:
+        - containerPort: 8111
+        volumeMounts:
+        - name: data
+          mountPath: /data/teamcity_server/datadir
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050/ca.crt
+          subPath: registry.crt
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: teamcity-data
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+Key Changes
+nodeName: pohakubenode1
+
+Forces the pod to run only on pohakubenode1.
+No need for labels or selectors—this is a direct assignment.
+Certificate Mount Fix
+
+Ensures the registry certificate is mounted as ca.crt (required by Docker).
+Apply the Changes
+bash
+
+Run
+Copy code
+kubectl apply -f teamcity-server-deployment.yaml
+Verify
+Check pod placement:
+
+bash
+
+Run
+Copy code
+kubectl get pods -o wide
+The pod should show pohakubenode1 under NODE.
+Test registry connectivity:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Ensure no more certificate errors.
+Caveats
+If pohakubenode1 is down, the pod won’t reschedule elsewhere.
+For production, prefer nodeSelector or affinity rules for flexibility.
+Let me know if you need adjustments! 🚀
+
+
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ kubectl exec -it teamcity-server-6f79d66f69-74ld6 -- sh
+\$ cd /etc/docker/ce*
+\$ ls
+192.168.100.100:30050
+\$ ls -la
+total 0
+drwxr-xr-x. 3 root root 35 Jun 24 02:30 .
+drwxr-xr-x. 3 root root 21 Jun 24 02:30 ..
+drwxr-xr-x. 3 root root 20 Jun 24 02:30 192.168.100.100:30050
+\$ cd 192*
+\$ ls
+ca.crt
+\$ ls -la
+total 0
+drwxr-xr-x. 3 root root 20 Jun 24 02:30 .
+drwxr-xr-x. 3 root root 35 Jun 24 02:30 ..
+drwxrwxrwt. 2 root root 40 Jun 24 02:30 ca.crt
+\$ cd ca.crt
+\$ ls
+\$  ca is a dir
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+It seems that the ca.crt is being created as a directory instead of a file, which is not the expected behavior. This can happen if the secret was created incorrectly or if the mount path is not set up properly.
+
+Step 1: Verify the Secret Creation
+First, let's check how the secret was created. You should ensure that the secret contains the certificate as a file and not as a directory. You can do this by running:
+
+bash
+
+Run
+Copy code
+kubectl get secret registry-ca -o yaml
+Step 2: Correct the Secret
+If the output shows that the ca.crt is not set up correctly, you will need to recreate the secret. Here’s how to do it:
+
+Delete the existing secret:
+
+bash
+
+Run
+Copy code
+kubectl delete secret registry-ca
+Create the secret again with the correct certificate file. Assuming you have the ca.crt file on your local machine, use the following command:
+
+bash
+
+Run
+Copy code
+kubectl create secret generic registry-ca --from-file=ca.crt=/path/to/your/ca.crt
+Replace /path/to/your/ca.crt with the actual path to your certificate file.
+
+Step 3: Update the Deployment (if needed)
+Ensure your deployment YAML is correctly set up to mount the secret as a file. Here’s the relevant part of the deployment YAML:
+
+yaml
+
+Run
+Copy code
+      volumeMounts:
+      - name: registry-ca
+        mountPath: /etc/docker/certs.d/192.168.100.100:30050/ca.crt  # Mount as ca.crt
+        subPath: ca.crt  # Ensure this matches the file name in the secret
+Step 4: Apply the Changes
+After recreating the secret, you may need to restart the TeamCity deployment to ensure it picks up the new secret:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 5: Verify the Mount Again
+Enter the TeamCity pod:
+
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-6f79d66f69-74ld6 -- sh
+Check the certificate path:
+
+bash
+
+Run
+Copy code
+ls -la /etc/docker/certs.d/192.168.100.100:30050/
+You should see ca.crt as a file, not a directory.
+
+Step 6: Test the Connection Again
+Once the certificate is correctly mounted as a file, you can test the connection to your Docker registry again.
+
+Summary
+Verify the secret contains the certificate as a file.
+Recreate the secret if necessary.
+Ensure the deployment mounts the secret correctly.
+Restart the deployment and verify the mount.
+Let me know if you need further assistance!
+
+
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ cat ./registry/registry.crt
+-----BEGIN CERTIFICATE-----
+MIIFJjCCAw6gAwIBAgIUHmuxJiUjKeWmeluWJe/4NC/vkGwwDQYJKoZIhvcNAQEL
+BQAwGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMB4XDTI1MDYyMzA2MzExOFoX
+DTI2MDYyMzA2MzExOFowGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMIICIjAN
+BgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAptKPfBt+y559hlqY7hFBGFh3Tkns
+pM/jP9Ts6LyMAaZfD9d6IqXkd++bRs8uez4X/V7i1b3kezcqspUN/Ewn1ECVPtpv
+Y55CTwkcoRahTqcJvUnk/Tf3q2i8ZOwEmhWibbt4bZEJWdzqMiSxZgujoBmvrqzT
+Z5nR81wiN2vuB+fNxhmc91DRs/0GXKaFLu0DqEHttZypCB6SzWPK0qLV61JFMf/F
+okAQJuddc6WTRgUi6aQ2okonOXeoAkEFlEXFRtGMXD2nKSq/UlPxMFoViGuBsrv6
+OS0WVMCXVG4CsuotQ/825HtwUqgZgntubPu517y+FOZ+WqEuiC1mzxVvnT1JuqmN
+k6gQJDt8veh27QzL+Un7jMhqvrfgMyP18ZLOzANqYYIzJQTnKloPsKw45QlnPQk+
+iQ+vW1i7T9LZ7GySMOAOP9LWk/1Ie+1OrfeNw/b/cTLDVOuR5il/c5jTvf7rXiLE
+6CKGYlF7bUXxnBH/gH15Eh5NPMFzCApLAIEOt8BQqNmiNEffkZ8QAvG58XEPn7lX
+DJSRM5vsYkNQBaHBCxdc/R5HWQCi5ALfLfsmTS/YEIv/rXTPH3N/kVoBVGOnhQw9
+MMSB5CXBsc2x76UYFA5aDxqudvLdOJEN3AAg/6hzYV64kN914jU7dM+N8SqYeP5j
+O7MBmqkrqyy2Ey8CAwEAAaNkMGIwHQYDVR0OBBYEFHqJQpn6vfw2A17bW5hxVlAO
+3ruSMB8GA1UdIwQYMBaAFHqJQpn6vfw2A17bW5hxVlAO3ruSMA8GA1UdEwEB/wQF
+MAMBAf8wDwYDVR0RBAgwBocEwKhkZDANBgkqhkiG9w0BAQsFAAOCAgEAeP/cWvig
+oANkftmrarBVDb3dn57g7foug3xitZlVwKNpbabESXkauxyGqPk04epCNQI752ej
+eGnHVnPjqwD+uJZqt01TZhWX2OEgiRYg71Q5ZWtl06KIwHBRjNKo2ea3RoTrOfkF
+C9rcRLoQkifqh7dzq6lDfKwsQVtotGpXYDSp8+cm0vO4bXSahIvAIwjDk026VgfM
+rYXbGTHdkNid0oZY5WDJ8mnyUysjcY/ooIDZyO2mS8GHpk3xQVhFzLW71LA3v+WR
+S5Z+W+oYaVKDpws46ntjWNO7h8Q1MtBW5PwkJS1IQ+ffVmGVFQ9bZslV91qwL3qD
+OCo8LhsVyXYGzjd6151GWhopo2XzziaRUEFre0ksRniN7RokD/Vhto/IvJJ1DVM5
+YbIouHE9mnksiUF+EvQPKn6pGe5/wiTMv5Pv0Iz1n6IedYCd8vLi6CJXLORJRkuI
+yrFxE/+O8FuuQICjhzC0lKpZeN9Z8jLT6/ZmpikgK8p/5ROUK0EVZCN3YdLIYvOD
+2uk5eV9pKi7NzVp88a+4k4a63cDx3xpmXxYwcVSHfNW5nRhVr1TgHpXQQ8Sp6Pw5
+FqW/+2a+ftGtHQjdS2Xt6gfH83UDWbMkmc/j4FzYS7moed47nX2sp7YfWpzxWy12
+bRExHIwYSR+/6bXHMNcJbb/VvK2cs1txXHY=
+-----END CERTIFICATE-----
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ kubectl delete secret registry-ca
+secret "registry-ca" deleted
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ kubectl create secret generic registry-ca --from-file=ca.crt=./registry/registry.crt
+secret/registry-ca created
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ kubectl get secret registry-ca -o yaml
+apiVersion: v1
+data:
+ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZKakNDQXc2Z0F3SUJBZ0lVSG11eEppVWpLZVdtZWx1V0plLzROQy92a0d3d0RRWUpLb1pJaHZjTkFRRUwKQlFBd0dqRVlNQllHQTFVRUF3d1BNVGt5TGpFMk9DNHhNREF1TVRBd01CNFhEVEkxTURZeU16QTJNekV4T0ZvWApEVEkyTURZeU16QTJNekV4T0Zvd0dqRVlNQllHQTFVRUF3d1BNVGt5TGpFMk9DNHhNREF1TVRBd01JSUNJakFOCkJna3Foa2lHOXcwQkFRRUZBQU9DQWc4QU1JSUNDZ0tDQWdFQXB0S1BmQnQreTU1OWhscVk3aEZCR0ZoM1RrbnMKcE0valA5VHM2THlNQWFaZkQ5ZDZJcVhrZCsrYlJzOHVlejRYL1Y3aTFiM2tlemNxc3BVTi9Fd24xRUNWUHRwdgpZNTVDVHdrY29SYWhUcWNKdlVuay9UZjNxMmk4Wk93RW1oV2liYnQ0YlpFSldkenFNaVN4Wmd1am9CbXZycXpUClo1blI4MXdpTjJ2dUIrZk54aG1jOTFEUnMvMEdYS2FGTHUwRHFFSHR0WnlwQ0I2U3pXUEswcUxWNjFKRk1mL0YKb2tBUUp1ZGRjNldUUmdVaTZhUTJva29uT1hlb0FrRUZsRVhGUnRHTVhEMm5LU3EvVWxQeE1Gb1ZpR3VCc3J2NgpPUzBXVk1DWFZHNENzdW90US84MjVIdHdVcWdaZ250dWJQdTUxN3krRk9aK1dxRXVpQzFtenhWdm5UMUp1cW1OCms2Z1FKRHQ4dmVoMjdRekwrVW43ak1ocXZyZmdNeVAxOFpMT3pBTnFZWUl6SlFUbktsb1BzS3c0NVFsblBRaysKaVErdlcxaTdUOUxaN0d5U01PQU9QOUxXay8xSWUrMU9yZmVOdy9iL2NUTERWT3VSNWlsL2M1alR2ZjdyWGlMRQo2Q0tHWWxGN2JVWHhuQkgvZ0gxNUVoNU5QTUZ6Q0FwTEFJRU90OEJRcU5taU5FZmZrWjhRQXZHNThYRVBuN2xYCkRKU1JNNXZzWWtOUUJhSEJDeGRjL1I1SFdRQ2k1QUxmTGZzbVRTL1lFSXYvclhUUEgzTi9rVm9CVkdPbmhRdzkKTU1TQjVDWEJzYzJ4NzZVWUZBNWFEeHF1ZHZMZE9KRU4zQUFnLzZoellWNjRrTjkxNGpVN2RNK044U3FZZVA1agpPN01CbXFrcnF5eTJFeThDQXdFQUFhTmtNR0l3SFFZRFZSME9CQllFRkhxSlFwbjZ2ZncyQTE3Ylc1aHhWbEFPCjNydVNNQjhHQTFVZEl3UVlNQmFBRkhxSlFwbjZ2ZncyQTE3Ylc1aHhWbEFPM3J1U01BOEdBMVVkRXdFQi93UUYKTUFNQkFmOHdEd1lEVlIwUkJBZ3dCb2NFd0toa1pEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FnRUFlUC9jV3ZpZwpvQU5rZnRtcmFyQlZEYjNkbjU3Zzdmb3VnM3hpdFpsVndLTnBiYWJFU1hrYXV4eUdxUGswNGVwQ05RSTc1MmVqCmVHbkhWblBqcXdEK3VKWnF0MDFUWmhXWDJPRWdpUllnNzFRNVpXdGwwNktJd0hCUmpOS28yZWEzUm9Uck9ma0YKQzlyY1JMb1FraWZxaDdkenE2bERmS3dzUVZ0b3RHcFhZRFNwOCtjbTB2TzRiWFNhaEl2QUl3akRrMDI2VmdmTQpyWVhiR1RIZGtOaWQwb1pZNVdESjhtbnlVeXNqY1kvb29JRFp5TzJtUzhHSHBrM3hRVmhGekxXNzFMQTN2K1dSClM1WitXK29ZYVZLRHB3czQ2bnRqV05PN2g4UTFNdEJXNVB3a0pTMUlRK2ZmVm1HVkZROWJac2xWOTFxd0wzcUQKT0NvOExoc1Z5WFlHempkNjE1MUdXaG9wbzJYenppYVJVRUZyZTBrc1JuaU43Um9rRC9WaHRvL0l2SkoxRFZNNQpZYklvdUhFOW1ua3NpVUYrRXZRUEtuNnBHZTUvd2lUTXY1UHYwSXoxbjZJZWRZQ2Q4dkxpNkNKWExPUkpSa3VJCnlyRnhFLytPOEZ1dVFJQ2poekMwbEtwWmVOOVo4akxUNi9abXBpa2dLOHAvNVJPVUswRVZaQ04zWWRMSVl2T0QKMnVrNWVWOXBLaTdOelZwODhhKzRrNGE2M2NEeDN4cG1YeFl3Y1ZTSGZOVzVuUmhWcjFUZ0hwWFFROFNwNlB3NQpGcVcvKzJhK2Z0R3RIUWpkUzJYdDZnZkg4M1VEV2JNa21jL2o0RnpZUzdtb2VkNDduWDJzcDdZZldwenhXeTEyCmJSRXhISXdZU1IrLzZiWEhNTmNKYmIvVnZLMmNzMXR4WEhZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+kind: Secret
+metadata:
+creationTimestamp: "2025-06-24T02:46:23Z"
+name: registry-ca
+namespace: default
+resourceVersion: "473196"
+uid: 24b2d064-2137-4d21-9ba9-8610e60faf9c
+type: Opaque
+[apohorai@pohakubemaster kube_depoyments_PRD]\$  why is it different?
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+The difference you're observing in the output of the kubectl get secret registry-ca -o yaml command is due to the way Kubernetes encodes the data in secrets. When you create a secret using the --from-file option, Kubernetes encodes the contents of the file in base64 format. This is standard behavior for Kubernetes secrets.
+
+Understanding the Output
+Base64 Encoding:
+
+The data field in the secret YAML contains the base64-encoded version of your certificate. This is why it looks different from the original certificate content you displayed using cat ./registry/registry.crt.
+For example, the line starting with ca.crt: is the base64-encoded representation of your certificate.
+Original Certificate:
+
+The original certificate you displayed is in plain text format, which is human-readable and includes the -----BEGIN CERTIFICATE----- and -----END CERTIFICATE----- lines.
+Verifying the Secret Contents
+To verify that the secret contains the correct certificate, you can decode the base64 content back to its original form. Here’s how to do that:
+
+Get the base64 content of the ca.crt from the secret:
+
+bash
+
+Run
+Copy code
+kubectl get secret registry-ca -o jsonpath='{.data.ca\.crt}' | base64 --decode
+Check the output: This should display the original certificate content, similar to what you see when you run cat ./registry/registry.crt.
+
+Why It Matters
+Kubernetes Secrets: They are designed to store sensitive information, and encoding helps to protect the data when stored in etcd (the underlying data store for Kubernetes).
+Correct Mounting: As long as the secret is created correctly and the deployment is set up to mount it properly, Kubernetes will handle the decoding automatically when the pod accesses the secret.
+Next Steps
+Ensure the Secret is Mounted Correctly: Make sure your deployment YAML is set to mount the secret correctly as a file. The relevant part should look like this:
+
+yaml
+
+Run
+Copy code
+volumeMounts:
+- name: registry-ca
+  mountPath: /etc/docker/certs.d/192.168.100.100:30050/ca.crt
+  subPath: ca.crt
+Restart the Deployment: If you made any changes to the secret or the deployment, restart the TeamCity deployment:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Verify the Mount: After restarting, check the contents of the mounted certificate in the pod:
+
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-<pod-id> -- cat /etc/docker/certs.d/192.168.100.100:30050/ca.crt
+This should show the original certificate content. If everything is set up correctly, your TeamCity server should now be able to connect to the Docker registry without any certificate issues. Let me know if you need further assistance!
+
+
+Test connection to https://192.168.100.100:30050/v2/ failed: An error occurred while trying to remove image from docker repo by url: https://192.168.100.100:30050/v2/: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target [apohorai@pohakubemaster kube_depoyments_PRD]\$ kubectl exec -it teamcity-server-9f9cfbc55-2xcl2 -- sh
+\$ cd /etc/docker
+\$ cd ce*
+\$ ls
+192.168.100.100:30050
+\$ cd 19*
+\$ ls
+ca.crt
+\$ cat ca*
+-----BEGIN CERTIFICATE-----
+MIIFJjCCAw6gAwIBAgIUHmuxJiUjKeWmeluWJe/4NC/vkGwwDQYJKoZIhvcNAQEL
+BQAwGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMB4XDTI1MDYyMzA2MzExOFoX
+DTI2MDYyMzA2MzExOFowGjEYMBYGA1UEAwwPMTkyLjE2OC4xMDAuMTAwMIICIjAN
+BgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAptKPfBt+y559hlqY7hFBGFh3Tkns
+pM/jP9Ts6LyMAaZfD9d6IqXkd++bRs8uez4X/V7i1b3kezcqspUN/Ewn1ECVPtpv
+Y55CTwkcoRahTqcJvUnk/Tf3q2i8ZOwEmhWibbt4bZEJWdzqMiSxZgujoBmvrqzT
+Z5nR81wiN2vuB+fNxhmc91DRs/0GXKaFLu0DqEHttZypCB6SzWPK0qLV61JFMf/F
+okAQJuddc6WTRgUi6aQ2okonOXeoAkEFlEXFRtGMXD2nKSq/UlPxMFoViGuBsrv6
+OS0WVMCXVG4CsuotQ/825HtwUqgZgntubPu517y+FOZ+WqEuiC1mzxVvnT1JuqmN
+k6gQJDt8veh27QzL+Un7jMhqvrfgMyP18ZLOzANqYYIzJQTnKloPsKw45QlnPQk+
+iQ+vW1i7T9LZ7GySMOAOP9LWk/1Ie+1OrfeNw/b/cTLDVOuR5il/c5jTvf7rXiLE
+6CKGYlF7bUXxnBH/gH15Eh5NPMFzCApLAIEOt8BQqNmiNEffkZ8QAvG58XEPn7lX
+DJSRM5vsYkNQBaHBCxdc/R5HWQCi5ALfLfsmTS/YEIv/rXTPH3N/kVoBVGOnhQw9
+MMSB5CXBsc2x76UYFA5aDxqudvLdOJEN3AAg/6hzYV64kN914jU7dM+N8SqYeP5j
+O7MBmqkrqyy2Ey8CAwEAAaNkMGIwHQYDVR0OBBYEFHqJQpn6vfw2A17bW5hxVlAO
+3ruSMB8GA1UdIwQYMBaAFHqJQpn6vfw2A17bW5hxVlAO3ruSMA8GA1UdEwEB/wQF
+MAMBAf8wDwYDVR0RBAgwBocEwKhkZDANBgkqhkiG9w0BAQsFAAOCAgEAeP/cWvig
+oANkftmrarBVDb3dn57g7foug3xitZlVwKNpbabESXkauxyGqPk04epCNQI752ej
+eGnHVnPjqwD+uJZqt01TZhWX2OEgiRYg71Q5ZWtl06KIwHBRjNKo2ea3RoTrOfkF
+C9rcRLoQkifqh7dzq6lDfKwsQVtotGpXYDSp8+cm0vO4bXSahIvAIwjDk026VgfM
+rYXbGTHdkNid0oZY5WDJ8mnyUysjcY/ooIDZyO2mS8GHpk3xQVhFzLW71LA3v+WR
+S5Z+W+oYaVKDpws46ntjWNO7h8Q1MtBW5PwkJS1IQ+ffVmGVFQ9bZslV91qwL3qD
+OCo8LhsVyXYGzjd6151GWhopo2XzziaRUEFre0ksRniN7RokD/Vhto/IvJJ1DVM5
+YbIouHE9mnksiUF+EvQPKn6pGe5/wiTMv5Pv0Iz1n6IedYCd8vLi6CJXLORJRkuI
+yrFxE/+O8FuuQICjhzC0lKpZeN9Z8jLT6/ZmpikgK8p/5ROUK0EVZCN3YdLIYvOD
+2uk5eV9pKi7NzVp88a+4k4a63cDx3xpmXxYwcVSHfNW5nRhVr1TgHpXQQ8Sp6Pw5
+FqW/+2a+ftGtHQjdS2Xt6gfH83UDWbMkmc/j4FzYS7moed47nX2sp7YfWpzxWy12
+bRExHIwYSR+/6bXHMNcJbb/VvK2cs1txXHY=
+-----END CERTIFICATE-----
+\$ cert is there and valid
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+The error message you're encountering indicates that the Java application (in this case, TeamCity) is unable to establish a secure connection to your Docker registry because it cannot find a valid certification path. This typically means that the self-signed certificate is not recognized by the Java trust store.
+
+Steps to Resolve the Issue
+Verify Certificate Mounting: You've confirmed that the certificate is present in the pod at the expected location. Ensure that it is mounted correctly as ca.crt in the path /etc/docker/certs.d/192.168.100.100:30050/.
+
+Import the Certificate into Java Trust Store: You need to ensure that the self-signed certificate is imported into the Java trust store used by the TeamCity server. Here’s how to do that:
+
+Step 1: Enter the TeamCity Pod
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-9f9cfbc55-2xcl2 -- sh
+Step 2: Find the Java Home Path
+Check where Java is installed:
+
+bash
+
+Run
+Copy code
+ls /usr/lib/jvm/
+You should see a directory for the Java version being used (e.g., java-11-openjdk).
+
+Step 3: Import the Certificate
+Use the keytool command to import the certificate into the Java trust store. The default trust store is usually located at $JAVA_HOME/lib/security/cacerts. The default password for the Java trust store is changeit.
+
+Run the following command (adjust the path to your Java installation as necessary):
+
+bash
+
+Run
+Copy code
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts -storepass changeit -noprompt
+You should see a message indicating that the certificate was added to the keystore.
+
+Restart the TeamCity Server: After importing the certificate, restart the TeamCity server to ensure it picks up the changes:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Test the Connection Again: Once the TeamCity server has restarted, check the logs for any errors and test the connection to your Docker registry again.
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Additional Troubleshooting Steps
+Check for Multiple Java Installations: If you have multiple versions of Java installed, ensure you are importing the certificate into the correct Java trust store.
+
+Verify Certificate Validity: Ensure that the certificate is indeed valid and corresponds to the Docker registry you are trying to connect to.
+
+Check Network Connectivity: Ensure that the TeamCity server can reach the Docker registry at https://192.168.100.100:30050.
+
+Summary
+Import the self-signed certificate into the Java trust store.
+Restart the TeamCity server.
+Verify the connection to the Docker registry.
+Let me know if you encounter any further issues!
+
+
+\$ keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /usr/lib/jvm/java-11-openjdk/lib/security/cacerts -storepass changeit -noprompt
+Certificate was added to keystore
+keytool error: java.io.FileNotFoundException: /usr/lib/jvm/java-11-openjdk/lib/security/cacerts (No such file or directory)
+\$
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+How to import a public SSL certificate into a JVM - Atlassian Support
+
+
+support.atlassian
+How to obtain the location of cacerts of the default java installation?
+
+
+stackoverflow
+Java can't find cacerts - Ask Ubuntu
+
+
+askubuntu
+azul zulu - JDK 11 import root ca certificates into keystore
+
+
+stackoverflow
+The cacerts file for Java 11 OpenJDK on Linux is typically located at $JAVA_HOME/lib/security/cacerts. You can find the exact path by checking your Java installation directory, which is often under /usr/lib/jvm/.
+
+
+sh: 8: cd: can't cd to /usr/lib/jvm
+$ java
+Usage: java [options] <mainclass> [args...]
+(to execute a class)
+or  java [options] -jar <jarfile> [args...]
+(to execute a jar file)
+or  java [options] -m <module>[/<mainclass>] [args...]
+java [options] --module <module>[/<mainclass>] [args...]
+(to execute the main class in a module)
+or  java [options] <sourcefile> [args]
+(to execute a single source-file program)
+
+Arguments following the main class, source file, -jar <jarfile>,
+-m or --module <module>/<mainclass> are passed as the arguments to
+main class.
+
+where options include:
+
+-cp <class search path of directories and zip/jar files>
+-classpath <class search path of directories and zip/jar files>
+--class-path <class search path of directories and zip/jar files>
+              A : separated list of directories, JAR archives,
+              and ZIP archives to search for class files.
+-p <module path>
+--module-path <module path>...
+              A : separated list of elements, each element is a file path
+              to a module or a directory containing modules. Each module is either
+              a modular JAR or an exploded-module directory.
+--upgrade-module-path <module path>...
+              A : separated list of elements, each element is a file path
+              to a module or a directory containing modules to replace
+              upgradeable modules in the runtime image. Each module is either
+              a modular JAR or an exploded-module directory.
+--add-modules <module name>[,<module name>...]
+              root modules to resolve in addition to the initial module.
+              <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
+              ALL-MODULE-PATH.
+--enable-native-access <module name>[,<module name>...]
+              modules that are permitted to perform restricted native operations.
+              <module name> can also be ALL-UNNAMED.
+--list-modules
+              list observable modules and exit
+-d <module name>
+--describe-module <module name>
+              describe a module and exit
+--dry-run     create VM and load main class but do not execute main method.
+              The --dry-run option may be useful for validating the
+              command-line options such as the module system configuration.
+--validate-modules
+              validate all modules and exit
+              The --validate-modules option may be useful for finding
+              conflicts and other errors with modules on the module path.
+-D<name>=<value>
+              set a system property
+-verbose:[class|module|gc|jni]
+              enable verbose output for the given subsystem
+-version      print product version to the error stream and exit
+--version     print product version to the output stream and exit
+-showversion  print product version to the error stream and continue
+--show-version
+              print product version to the output stream and continue
+--show-module-resolution
+              show module resolution output during startup
+-? -h -help
+              print this help message to the error stream
+--help        print this help message to the output stream
+-X            print help on extra options to the error stream
+--help-extra  print help on extra options to the output stream
+-ea[:<packagename>...|:<classname>]
+-enableassertions[:<packagename>...|:<classname>]
+              enable assertions with specified granularity
+-da[:<packagename>...|:<classname>]
+-disableassertions[:<packagename>...|:<classname>]
+              disable assertions with specified granularity
+-esa | -enablesystemassertions
+              enable system assertions
+-dsa | -disablesystemassertions
+              disable system assertions
+-agentlib:<libname>[=<options>]
+              load native agent library <libname>, e.g. -agentlib:jdwp
+              see also -agentlib:jdwp=help
+-agentpath:<pathname>[=<options>]
+              load native agent library by full pathname
+-javaagent:<jarpath>[=<options>]
+              load Java programming language agent, see java.lang.instrument
+-splash:<imagepath>
+              show splash screen with specified image
+              HiDPI scaled images are automatically supported and used
+              if available. The unscaled image filename, e.g. image.ext,
+              should always be passed as the argument to the -splash option.
+              The most appropriate scaled image provided will be picked up
+              automatically.
+              See the SplashScreen API documentation for more information
+@argument files
+              one or more argument files containing options
+--disable-@files
+              prevent further argument file expansion
+--enable-preview
+              allow classes to depend on preview features of this release
+To specify an argument for a long option, you can use --<name>=<value> or
+--<name> <value>.
+
+\$ whereis java
+java: /usr/bin/java /opt/java/openjdk/bin/java
+\$ uname
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+It looks like you're having trouble locating the Java installation directory and the cacerts file. Let's go through the steps to find the correct path and import the certificate into the Java trust store.
+
+Step 1: Find the Java Home Directory
+Since you have multiple Java installations, you can find the Java home directory by running the following command:
+
+bash
+
+Run
+Copy code
+readlink -f $(which java)
+This command will give you the path to the java executable. From there, you can navigate to the Java home directory. For example, if the output is /opt/java/openjdk/bin/java, then the Java home directory would be /opt/java/openjdk.
+
+Step 2: Locate the cacerts File
+Once you have the Java home directory, you can find the cacerts file in the following path:
+
+bash
+
+Run
+Copy code
+$JAVA_HOME/lib/security/cacerts
+For example, if your Java home directory is /opt/java/openjdk, the path to the cacerts file would be:
+
+bash
+
+Run
+Copy code
+/opt/java/openjdk/lib/security/cacerts
+Step 3: Import the Certificate
+Now that you have the correct path to the cacerts file, you can import the certificate using the keytool command. Replace <path_to_cacerts> with the actual path you found:
+
+bash
+
+Run
+Copy code
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /opt/java/openjdk/lib/security/cacerts -storepass changeit -noprompt
+Step 4: Restart the TeamCity Server
+After importing the certificate, restart the TeamCity server:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 5: Test the Connection Again
+Once the TeamCity server has restarted, check the logs for any errors and test the connection to your Docker registry again.
+
+Summary
+Use readlink -f $(which java) to find the Java executable path.
+Navigate to the Java home directory to locate the cacerts file.
+Import the certificate into the Java trust store.
+Restart the TeamCity server and test the connection.
+Let me know if you need further assistance!
+
+
+\$ readlink -f \$(which java)
+/opt/java/openjdk/bin/java
+\$ cd /opt/java/openjdk
+\$ ls
+ADDITIONAL_LICENSE_INFO  ASSEMBLY_EXCEPTION  bin  commitId.txt  conf  include  jmods  legal  lib  LICENSE  man  README.md  release  version.txt
+\$ cd lib
+\$ ls
+classlist   jspawnhelper        libawt_xawt.so     libinstrument.so  libjavajpeg.so  libjli.so     lible.so                libnet.so     libsctp.so          modules               src.zip
+ct.sym      jvm.cfg             libdt_socket.so    libj2gss.so       libjava.so      libjsig.so    libmanagement_agent.so  libnio.so     libsplashscreen.so  psfontj2d.properties  tzdb.dat
+jexec       libattach.so        libextnet.so       libj2pcsc.so      libjawt.so      libjsound.so  libmanagement_ext.so    libprefs.so   libsyslookup.so     psfont.properties.ja
+jfr         libawt_headless.so  libfontmanager.so  libj2pkcs11.so    libjdwp.so      libjsvml.so   libmanagement.so        librmi.so     libverify.so        security
+jrt-fs.jar  libawt.so           libfreetype.so     libjaas.so        libjimage.so    liblcms.so    libmlib_image.so        libsaproc.so  libzip.so           server
+\$ cd sec*
+\$ ls
+blocked.certs  cacerts  default.policy  public_suffix_list.dat
+\$
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+Great! You've successfully located the cacerts file in the Java installation directory at /opt/java/openjdk/lib/security/cacerts. Now you can proceed to import the self-signed certificate into the Java trust store.
+
+Step 1: Import the Certificate
+Run the following command to import the certificate into the cacerts file. Make sure to use the correct path to the ca.crt file:
+
+bash
+
+Run
+Copy code
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /opt/java/openjdk/lib/security/cacerts -storepass changeit -noprompt
+Step 2: Verify the Import
+After running the command, you should see a message indicating that the certificate was added to the keystore. You can verify that the certificate was successfully imported by listing the contents of the keystore:
+
+bash
+
+Run
+Copy code
+keytool -list -keystore /opt/java/openjdk/lib/security/cacerts -storepass changeit
+Look for the alias docker-registry in the output.
+
+Step 3: Restart the TeamCity Server
+Once the certificate is imported, restart the TeamCity server to ensure it picks up the changes:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 4: Test the Connection Again
+After the TeamCity server has restarted, check the logs for any errors and test the connection to your Docker registry again.
+
+Summary
+Import the self-signed certificate into the Java trust store.
+Verify the import by listing the contents of the keystore.
+Restart the TeamCity server.
+Test the connection to the Docker registry.
+Let me know if you encounter any issues or need further assistance!
+
+
+cuser@teamcity-server-9f9cfbc55-2xcl2:/opt/java/openjdk/lib/security\$ keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /opt/java/openjdk/lib/security/cacerts
+Warning: use -cacerts option to access cacerts keystore
+Owner: CN=192.168.100.100
+Issuer: CN=192.168.100.100
+Serial number: 1e6bb126252329e5a67a5b9625eff8342fef906c
+Valid from: Mon Jun 23 06:31:18 GMT 2025 until: Tue Jun 23 06:31:18 GMT 2026
+Certificate fingerprints:
+SHA1: F9:A3:89:5A:3E:C9:8B:6C:EE:B4:2C:96:01:A3:C0:80:4E:AC:27:5D
+SHA256: 39:8B:29:6A:D7:E9:2C:1A:E7:D9:C1:40:C9:A0:C9:33:D9:86:D5:20:A0:B1:5A:DB:D7:3D:DA:04:7C:F5:ED:4A
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 4096-bit RSA key
+Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.35 Criticality=false
+AuthorityKeyIdentifier [
+KeyIdentifier [
+0000: 7A 89 42 99 FA BD FC 36   03 5E DB 5B 98 71 56 50  z.B....6.^.[.qVP
+0010: 0E DE BB 92                                        ....
+]
+]
+
+#2: ObjectId: 2.5.29.19 Criticality=true
+BasicConstraints:[
+CA:true
+PathLen: no limit
+]
+
+#3: ObjectId: 2.5.29.17 Criticality=false
+SubjectAlternativeName [
+IPAddress: 192.168.100.100
+]
+
+#4: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 7A 89 42 99 FA BD FC 36   03 5E DB 5B 98 71 56 50  z.B....6.^.[.qVP
+0010: 0E DE BB 92                                        ....
+]
+]
+
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+keytool error: java.io.FileNotFoundException: /opt/java/openjdk/lib/security/cacerts (Permission denied)
+tcuser@teamcity-server-9f9cfbc55-2xcl2:/opt/java/openjdk/lib/security\$
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+The error message you're encountering indicates that you do not have the necessary permissions to write to the cacerts file in the Java security directory. This is a common issue when trying to modify system files without elevated privileges.
+
+Solution: Use sudo to Import the Certificate
+To resolve this, you can run the keytool command with sudo to gain the necessary permissions. However, since you're inside a Kubernetes pod, you may not have sudo available. Instead, you can try the following steps:
+
+Exit the Pod: If you have access to the Kubernetes node where the pod is running, you can perform the following steps directly on the node.
+
+Copy the Certificate to the Host: First, copy the ca.crt file from the pod to your local machine or directly to the Kubernetes node.
+
+bash
+
+Run
+Copy code
+kubectl cp teamcity-server-9f9cfbc55-2xcl2:/etc/docker/certs.d/192.168.100.100:30050/ca.crt ./ca.crt
+Import the Certificate on the Host: Once you have the certificate on your local machine or the Kubernetes node, you can import it into the Java trust store using sudo:
+
+bash
+
+Run
+Copy code
+sudo keytool -importcert -trustcacerts -file ./ca.crt -alias "docker-registry" -keystore /opt/java/openjdk/lib/security/cacerts -storepass changeit -noprompt
+Restart the TeamCity Pod: After successfully importing the certificate, restart the TeamCity pod to ensure it picks up the changes:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Test the Connection Again: After the pod has restarted, check the logs for any errors and test the connection to your Docker registry again.
+
+Alternative Approach: Use a Custom Trust Store
+If you cannot modify the default cacerts file, another approach is to create a custom trust store and configure the Java application to use it. Here’s how:
+
+Create a New Trust Store:
+
+bash
+
+Run
+Copy code
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /etc/docker/certs.d/custom-truststore.jks -storepass changeit
+Set Java Options: You can set the javax.net.ssl.trustStore system property to point to your custom trust store when starting the TeamCity server. This can usually be done in the TeamCity configuration or startup script.
+
+bash
+
+Run
+Copy code
+-Djavax.net.ssl.trustStore=/etc/docker/certs.d/custom-truststore.jks
+-Djavax.net.ssl.trustStorePassword=changeit
+Restart the TeamCity Pod: After configuring the custom trust store, restart the TeamCity pod.
+
+Summary
+If you have access to the Kubernetes node, copy the certificate and import it using sudo.
+Alternatively, create a custom trust store and configure TeamCity to use it.
+Let me know if you need further assistance!
+
+
+no sudo
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+If you don't have sudo access and you're unable to modify the cacerts file directly from within the Kubernetes pod, you can create a custom trust store within the pod itself. Here’s how to do that:
+
+Step 1: Create a Custom Trust Store
+Create a New Trust Store: You can create a new trust store file in a writable directory within the pod. For example, you can create it in the /tmp directory.
+
+bash
+
+Run
+Copy code
+keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /tmp/custom-truststore.jks -storepass changeit
+This command will prompt you to trust the certificate. Type yes to confirm.
+
+Step 2: Set Java Options to Use the Custom Trust Store
+Set Java Options: You need to configure the TeamCity server to use the custom trust store. This can typically be done by setting environment variables or modifying the startup script.
+
+If you can modify the deployment configuration, you can add the following environment variables to the TeamCity deployment YAML:
+
+yaml
+
+Run
+Copy code
+env:
+  - name: JAVA_OPTS
+    value: "-Djavax.net.ssl.trustStore=/tmp/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+If you cannot modify the deployment configuration, you may need to set these options directly in the startup command of the TeamCity server.
+
+Step 3: Restart the TeamCity Server
+Restart the TeamCity Pod: After setting the environment variables, restart the TeamCity server to apply the changes:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 4: Test the Connection Again
+Test the Connection: Once the TeamCity server has restarted, check the logs for any errors and test the connection to your Docker registry again.
+Summary
+Create a custom trust store in a writable directory within the pod.
+Set the Java options to use the custom trust store.
+Restart the TeamCity server and test the connection.
+Let me know if you need further assistance!
+
+
+tcuser@teamcity-server-9f9cfbc55-2xcl2:/opt/java/openjdk/lib/security\$ keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /tmp/custom-truststore.jks -storepass changeit
+Owner: CN=192.168.100.100
+Issuer: CN=192.168.100.100
+Serial number: 1e6bb126252329e5a67a5b9625eff8342fef906c
+Valid from: Mon Jun 23 06:31:18 GMT 2025 until: Tue Jun 23 06:31:18 GMT 2026
+Certificate fingerprints:
+SHA1: F9:A3:89:5A:3E:C9:8B:6C:EE:B4:2C:96:01:A3:C0:80:4E:AC:27:5D
+SHA256: 39:8B:29:6A:D7:E9:2C:1A:E7:D9:C1:40:C9:A0:C9:33:D9:86:D5:20:A0:B1:5A:DB:D7:3D:DA:04:7C:F5:ED:4A
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 4096-bit RSA key
+Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.35 Criticality=false
+AuthorityKeyIdentifier [
+KeyIdentifier [
+0000: 7A 89 42 99 FA BD FC 36   03 5E DB 5B 98 71 56 50  z.B....6.^.[.qVP
+0010: 0E DE BB 92                                        ....
+]
+]
+
+#2: ObjectId: 2.5.29.19 Criticality=true
+BasicConstraints:[
+CA:true
+PathLen: no limit
+]
+
+#3: ObjectId: 2.5.29.17 Criticality=false
+SubjectAlternativeName [
+IPAddress: 192.168.100.100
+]
+
+#4: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 7A 89 42 99 FA BD FC 36   03 5E DB 5B 98 71 56 50  z.B....6.^.[.qVP
+0010: 0E DE BB 92                                        ....
+]
+]
+
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+tcuser@teamcity-server-9f9cfbc55-2xcl2:/opt/java/openjdk/lib/security\$
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+The certificate has been successfully added to the custom trust store located at /tmp/custom-truststore.jks. Now, you need to configure the TeamCity server to use this custom trust store.
+
+Step 1: Set Java Options for TeamCity
+You need to set the Java options to point to the custom trust store. This can typically be done by modifying the deployment configuration for TeamCity. Here’s how to do it:
+
+Edit the TeamCity Deployment Configuration: You can use kubectl edit to modify the deployment directly. Run the following command:
+
+bash
+
+Run
+Copy code
+kubectl edit deployment teamcity-server
+Add Environment Variables: In the deployment YAML, look for the spec.containers section and add the following environment variables under the container definition:
+
+yaml
+
+Run
+Copy code
+env:
+  - name: JAVA_OPTS
+    value: "-Djavax.net.ssl.trustStore=/tmp/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+The modified section should look something like this:
+
+yaml
+
+Run
+Copy code
+containers:
+  - name: teamcity-server
+    image: <your-teamcity-image>
+    env:
+      - name: JAVA_OPTS
+        value: "-Djavax.net.ssl.trustStore=/tmp/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+Save and Exit: After making the changes, save and exit the editor.
+
+Step 2: Restart the TeamCity Server
+After updating the deployment configuration, restart the TeamCity server to apply the changes:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment teamcity-server
+Step 3: Test the Connection Again
+Once the TeamCity server has restarted, check the logs for any errors and test the connection to your Docker registry again. You can check the logs using:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Summary
+Add the custom trust store configuration to the TeamCity deployment.
+Restart the TeamCity server.
+Test the connection to the Docker registry.
+Let me know if you encounter any issues or need further assistance!
+
+
+I'm gonna lose this /opt/java/openjdk/lib/security\$ keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt -alias "docker-registry" -keystore /tmp/custom-truststore.jks -storepass changeit
+after restart....
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+How to keep the truststore of a java application up-to-date?
+
+
+stackoverflow
+Reload certs while server is running. - Oracle Forums
+
+
+forums.oracle
+Using a Custom TrustStore in Java | Baeldung
+
+
+baeldung
+Clearing Java certificates cache (force reload certificates)
+
+
+serverfault
+To persist a custom Java truststore after a server restart, you should configure your application or server to reference the truststore in its startup settings. This typically involves setting environment variables or JVM options to point to the truststore file and its password, ensuring these settings are included in your deployment configuration.
+
+Steps to Ensure Truststore Persistence After Restart
+Verify Truststore Location: Ensure that the custom truststore file (/tmp/custom-truststore.jks) is accessible and remains in the same location after a restart. If the server is ephemeral, consider moving the truststore to a persistent volume.
+
+Update Deployment Configuration: Modify your application or server's deployment configuration to include the truststore settings. This can be done by adding the necessary environment variables or JVM options.
+
+Set Environment Variables: In your deployment configuration (e.g., Kubernetes, Docker), set the following environment variables to point to your custom truststore:
+
+yaml
+
+Run
+Copy code
+env:
+  - name: JAVA_OPTS
+    value: "-Djavax.net.ssl.trustStore=/tmp/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+Restart the Application: After making the changes, restart your application or server to apply the new configuration. This can usually be done with a command like:
+
+bash
+
+Run
+Copy code
+kubectl rollout restart deployment <your-deployment-name>
+Check Logs for Errors: After the restart, monitor the application logs to ensure that there are no errors related to SSL connections. Use the following command to view logs:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/<your-deployment-name>
+Test the Connection: Finally, test the connection to the Docker registry or any other service that requires the custom truststore to ensure that everything is functioning correctly.
+
+Summary
+Ensure the truststore is in a persistent location.
+Update the deployment configuration to include truststore settings.
+Restart the application and check logs for any issues.
+Test the connection to confirm successful configuration.
+If you need further assistance or encounter any issues, feel free to ask!
+
+
+look you fucking idiot. This pod is created from a deployment file, remember?
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+You're absolutely right - in a Kubernetes deployment, changes made inside a running pod will be lost when the pod restarts since it gets recreated from the container image. Let me give you the proper solution that persists across pod restarts.
+
+Permanent Solution for TeamCity Docker Registry Trust:
+Create a ConfigMap for the truststore:
+
+bash
+
+Run
+Copy code
+kubectl create configmap teamcity-truststore --from-file=/tmp/custom-truststore.jks
+Modify your deployment.yaml to:
+
+Mount the ConfigMap
+Set the JAVA_OPTS environment variable
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+  # ... existing metadata ...
+spec:
+  # ... existing spec ...
+  template:
+    spec:
+      containers:
+      - name: teamcity
+        # ... existing container config ...
+        env:
+        - name: JAVA_OPTS
+          value: "-Djavax.net.ssl.trustStore=/etc/teamcity-truststore/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+        volumeMounts:
+        - name: teamcity-truststore
+          mountPath: /etc/teamcity-truststore
+      volumes:
+      - name: teamcity-truststore
+        configMap:
+          name: teamcity-truststore
+Apply the changes:
+bash
+
+Run
+Copy code
+kubectl apply -f teamcity-server-deployment.yaml
+kubectl rollout restart deployment teamcity-server
+Why this works permanently:
+ConfigMap persists the truststore outside the pod
+Volume mount makes it available at the specified path
+JAVA_OPTS ensures TeamCity uses your custom truststore
+These settings survive pod restarts since they're part of the deployment spec
+The truststore will now:
+✅ Persist through pod restarts
+✅ Be available to new pods
+✅ Maintain the certificate configuration
+
+No more losing your certificate imports when pods restart. This is the correct Kubernetes-native way to handle this configuration.
+
+
+step by step
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+Here's the complete step-by-step solution to make your certificate trust persistent in TeamCity running on Kubernetes:
+
+Step 1: Create the truststore file (one-time)
+
+Run
+Copy code
+1. kubectl exec -it teamcity-server-9f9cfbc55-2xcl2 -- sh
+2. keytool -importcert -trustcacerts -file /etc/docker/certs.d/192.168.100.100\:30050/ca.crt -alias "docker-registry" -keystore /tmp/custom-truststore.jks -storepass changeit
+   (Type 'yes' when prompted)
+3. exit
+Step 2: Create ConfigMap from the truststore
+bash
+
+Run
+Copy code
+kubectl cp teamcity-server-9f9cfbc55-2xcl2:/tmp/custom-truststore.jks ./custom-truststore.jks
+kubectl create configmap teamcity-truststore --from-file=./custom-truststore.jks
+Step 3: Modify your deployment.yaml
+Add these sections (or update existing ones):
+
+yaml
+
+Run
+Copy code
+# Add to spec.template.spec.containers.env:
+- name: JAVA_OPTS
+  value: "-Djavax.net.ssl.trustStore=/etc/teamcity-truststore/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+
+# Add to spec.template.spec.containers.volumeMounts:
+- name: teamcity-truststore
+  mountPath: /etc/teamcity-truststore
+
+# Add to spec.template.spec.volumes:
+- name: teamcity-truststore
+  configMap:
+    name: teamcity-truststore
+    items:
+    - key: custom-truststore.jks
+      path: custom-truststore.jks
+Step 4: Apply and restart
+bash
+
+Run
+Copy code
+kubectl apply -f teamcity-server-deployment.yaml
+kubectl rollout restart deployment teamcity-server
+Verification steps:
+Check pod restarted:
+bash
+
+Run
+Copy code
+kubectl get pods
+Verify truststore exists in new pod:
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-[NEW_POD_ID] -- ls -la /etc/teamcity-truststore/
+Verify certificate is present:
+bash
+
+Run
+Copy code
+kubectl exec -it teamcity-server-[NEW_POD_ID] -- keytool -list -keystore /etc/teamcity-truststore/custom-truststore.jks -storepass changeit
+This solution:
+
+Persists through pod restarts
+Survives deployments
+Maintains the certificate trust configuration
+Follows Kubernetes best practices
+The certificate will now remain trusted even after pod restarts or redeployments.
+
+
+give me the full deployment
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+Here's the complete teamcity-server-deployment.yaml with all the necessary modifications to make your Docker registry certificate trust persist across pod restarts:
+
+yaml
+
+Run
+Copy code
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+  labels:
+    app: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      # Node selector to pin to specific node if needed
+      nodeSelector:
+        kubernetes.io/hostname: pohakubenode1
+      
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 8.8.8.8
+          - 8.8.4.4
+      
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        ports:
+        - containerPort: 8111
+        env:
+        - name: JAVA_OPTS
+          value: "-Djavax.net.ssl.trustStore=/etc/teamcity-truststore/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+        volumeMounts:
+        - name: data
+          mountPath: /data/teamcity_server/datadir
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050
+        - name: teamcity-truststore
+          mountPath: /etc/teamcity-truststore
+      
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: teamcity-data
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+      - name: teamcity-truststore
+        configMap:
+          name: teamcity-truststore
+          items:
+          - key: custom-truststore.jks
+            path: custom-truststore.jks
+Key Components Explained:
+TrustStore Configuration:
+
+Mounts the ConfigMap (teamcity-truststore) at /etc/teamcity-truststore
+Sets JAVA_OPTS to point to the truststore file with the password
+Node Assignment:
+
+Forces deployment to pohakubenode1 using nodeSelector
+Certificate Mounts:
+
+Docker registry cert is mounted via secret at standard Docker location
+Custom truststore is mounted via ConfigMap
+Persistence:
+
+TeamCity data persists via PVC (teamcity-data)
+Certificate trust persists via ConfigMap (teamcity-truststore)
+To apply this configuration:
+
+bash
+
+Run
+Copy code
+# First, create the ConfigMap if not already created
+kubectl create configmap teamcity-truststore --from-file=./custom-truststore.jks
+
+# Then apply the deployment
+kubectl apply -f teamcity-server-deployment.yaml
+
+# Verify everything works
+kubectl rollout status deployment teamcity-server
+This solution ensures:
+
+The certificate trust persists through pod restarts
+The deployment remains pinned to your specified node
+Both Docker and Java trust the registry certificate
+All configurations are managed through proper Kubernetes resources
+
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ kubectl exec -it teamcity-server-7d87786f4b-fgth4 -- ls -la /etc/teamcity-truststore/
+total 0
+drwxrwxrwx. 3 root root 89 Jun 24 03:34 .
+drwxr-xr-x. 1 root root 47 Jun 24 03:34 ..
+drwxr-xr-x. 2 root root 35 Jun 24 03:34 ..2025_06_24_03_34_20.2863497779
+lrwxrwxrwx. 1 root root 28 Jun 24 03:34 custom-truststore.jks -> ..data/custom-truststore.jks
+lrwxrwxrwx. 1 root root 32 Jun 24 03:34 ..data -> ..2025_06_24_03_34_20.2863497779
+[apohorai@pohakubemaster kube_depoyments_PRD]\$ kubectl exec -it teamcity-server-7d87786f4b-fgth4 -- keytool -list -keystore /etc/teamcity-truststore/custom-truststore.jks -storepass changeit
+Keystore type: PKCS12
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+docker-registry, Jun 24, 2025, trustedCertEntry,
+Certificate fingerprint (SHA-256): 39:8B:29:6A:D7:E9:2C:1A:E7:D9:C1:40:C9:A0:C9:33:D9:86:D5:20:A0:B1:5A:DB:D7:3D:DA:04:7C:F5:ED:4A
+[apohorai@pohakubemaster kube_depoyments_PRD]\$
+
+Copy message
+Edit message
+
+BLACKBOXAI
+
+It looks like the custom truststore has been successfully created and is accessible within the TeamCity pod. The output indicates that the truststore contains the expected entry for the Docker registry certificate, which is a good sign.
+
+Next Steps
+Now that you have confirmed the truststore is set up correctly, you can proceed with the following steps:
+
+Verify TeamCity Configuration: Ensure that TeamCity is configured to use the custom truststore. You should have already set the JAVA_OPTS environment variable in your deployment configuration, which points to the truststore.
+
+Test the Connection to the Docker Registry: You can test if TeamCity can successfully connect to the Docker registry using the trusted certificate. This can typically be done by checking the logs or performing an action in TeamCity that requires access to the Docker registry.
+
+Monitor Logs for Errors: Check the TeamCity server logs to ensure there are no SSL-related errors when trying to connect to the Docker registry. You can view the logs using:
+
+bash
+
+Run
+Copy code
+kubectl logs deployment/teamcity-server
+Perform a Build or Action: If you have a build configuration that pulls images from the Docker registry, trigger a build to see if it completes successfully without SSL errors.
+
+Example Command to Check Logs
+bash
+
+Run
+Copy code
+kubectl logs -f deployment/teamcity-server
+This command will follow the logs in real-time, allowing you to see any connection attempts and errors as they happen.
+
+Summary
+The truststore is correctly set up and contains the necessary certificate.
+Ensure TeamCity is configured to use the truststore.
+Test the connection to the Docker registry and monitor logs for any issues.
+If you encounter any issues or need further assistance, feel free to ask!
+
+
+Bookmark message
+Copy message
+Export
+
+
+Notifications
+
+
