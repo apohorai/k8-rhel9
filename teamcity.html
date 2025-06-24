@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamCity Kubernetes SSL Setup Guide</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #3498db;
+        }
+        .note {
+            background-color: #e7f4ff;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #fff3e0;
+            padding: 10px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+        }
+        .success {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>TeamCity Kubernetes SSL Setup Guide</h1>
+    
+    <h2>1. Create Kubernetes Secret for Registry Certificate</h2>
+    <pre><code># Create secret from your registry certificate
+kubectl create secret generic registry-ca \
+  --from-file=./registry/registry.crt</code></pre>
+    
+    <div class="note">
+        <strong>Note:</strong> Make sure your <code>registry.crt</code> file is in the current directory or provide the full path.
+    </div>
+
+    <h2>2. Create TrustStore Inside Pod (One-Time Operation)</h2>
+    <pre><code># Access the existing pod
+kubectl exec -it teamcity-server-&lt;pod-id&gt; -- sh
+
+# Inside pod:
+keytool -importcert -trustcacerts \
+  -file /etc/docker/certs.d/192.168.100.100:30050/ca.crt \
+  -alias "docker-registry" \
+  -keystore /tmp/custom-truststore.jks \
+  -storepass changeit
+# Type 'yes' when prompted
+exit</code></pre>
+
+    <h2>3. Export TrustStore and Create ConfigMap</h2>
+    <pre><code># Copy truststore from pod to local machine
+kubectl cp teamcity-server-&lt;pod-id&gt;:/tmp/custom-truststore.jks ./custom-truststore.jks
+
+# Create ConfigMap from truststore
+kubectl create configmap teamcity-truststore \
+  --from-file=./custom-truststore.jks</code></pre>
+
+    <h2>4. Create/Update Deployment YAML</h2>
+    <p>Save this as <code>teamcity-server-deployment.yaml</code>:</p>
+    <pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+  labels:
+    app: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: pohakubenode1  # Force to specific node
+      
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        ports:
+        - containerPort: 8111
+        env:
+        - name: JAVA_OPTS
+          value: "-Djavax.net.ssl.trustStore=/etc/teamcity-truststore/custom-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+        volumeMounts:
+        - name: data
+          mountPath: /data/teamcity_server/datadir
+        - name: registry-ca
+          mountPath: /etc/docker/certs.d/192.168.100.100:30050
+        - name: teamcity-truststore
+          mountPath: /etc/teamcity-truststore
+      
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: teamcity-data
+      - name: registry-ca
+        secret:
+          secretName: registry-ca
+      - name: teamcity-truststore
+        configMap:
+          name: teamcity-truststore
+          items:
+          - key: custom-truststore.jks
+            path: custom-truststore.jks</code></pre>
+
+    <h2>5. Apply Configuration</h2>
+    <pre><code># Apply the deployment
+kubectl apply -f teamcity-server-deployment.yaml
+
+# Force rollout restart
+kubectl rollout restart deployment teamcity-server</code></pre>
+
+    <h2>6. Verification</h2>
+    <pre><code># Check truststore mount
+kubectl exec -it teamcity-server-&lt;new-pod-id&gt; -- ls -la /etc/teamcity-truststore/
+
+# Verify certificate exists
+kubectl exec -it teamcity-server-&lt;new-pod-id&gt; -- \
+  keytool -list -keystore /etc/teamcity-truststore/custom-truststore.jks -storepass changeit
+
+# Check logs for connection attempts
+kubectl logs -f deployment/teamcity-server</code></pre>
+
+    <div class="success">
+        <h3>Key Takeaways</h3>
+        <ul>
+            <li><strong>Certificate Persistence</strong>:
+                <ul>
+                    <li>Registry cert persists via Kubernetes Secret</li>
+                    <li>Truststore persists via ConfigMap</li>
+                    <li>Both survive pod restarts</li>
+                </ul>
+            </li>
+            <li><strong>Dual-Level Trust</strong>:
+                <ul>
+                    <li>Docker CLI trusts via <code>/etc/docker/certs.d</code> mount</li>
+                    <li>Java apps trust via custom truststore (JKS)</li>
+                </ul>
+            </li>
+            <li><strong>Node Specificity</strong>:
+                <ul>
+                    <li>Deployment locked to <code>pohakubenode1</code> via <code>nodeSelector</code></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="warning">
+        <strong>Important:</strong> This configuration provides a complete, production-ready solution that maintains trust relationships even through pod restarts and deployments.
+    </div>
+</body>
+</html>
