@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>llama.cpp CPU Setup Summary</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #f8f9fa;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+      background-color: #fff;
+    }
+    th, td {
+      padding: 0.75em;
+      border: 1px solid #ccc;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #eee;
+    }
+    code, pre {
+      background-color: #eee;
+      padding: 0.4em;
+      font-family: monospace;
+      border-radius: 4px;
+      display: block;
+      overflow-x: auto;
+    }
+    ul {
+      margin-top: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 llama.cpp CPU Setup Summary</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Step</th>
+        <th>What We Did</th>
+        <th>Fixes / Key Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Started from a <code>Dockerfile</code> to build llama.cpp with ROCm.</td>
+        <td>Postponed ROCm support. Decided to go CPU-only first.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Cleaned up the Dockerfile for CPU-only build.</td>
+        <td>Removed ROCm flags. Cloned with <code>--recursive</code>. Built into <code>/app/llama.cpp/build</code>.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Container failed to start due to <code>CMD ["main", "--help"]</code>.</td>
+        <td>Fixed it to use <code>/app/llama.cpp/build/bin/llama-cli</code>.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Entered the container & listed built binaries.</td>
+        <td>Confirmed <code>llama-cli</code>, <code>llama-run</code>, etc. existed.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Mounted and tried Mistral-7B (4 GB) model.</td>
+        <td>VM with 4 GB RAM locked up. Needed hard reboot.</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Recovered VM by killing QEMU process manually.</td>
+        <td>Don't run 7B models on low-memory VMs without swap or GPU.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Downloaded lightweight <code>SmolLM-135M.Q2_K.gguf</code> (84 MB).</td>
+        <td>Placed model into <code>./models</code> folder.</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>First model run failed — model not found in container.</td>
+        <td>Used incorrect mount path: <code>-v $(pwd):/models</code> instead of pointing to <code>models</code> folder.</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Fixed model path with <code>-v $(pwd)/models:/models</code>.</td>
+        <td>Model loaded and ran in ~2 seconds. 🎉</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Got valid inference output using llama-cli on CPU.</td>
+        <td>SmolLM responded fluently, though shallowly. Good performance.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>📄 Dockerfile (CPU-only version)</h2>
+  <pre><code>FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    git \
+    cmake \
+    build-essential \
+    python3 \
+    python3-pip \
+    wget \
+    curl \
+    libcurl4-openssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Clone llama.cpp
+WORKDIR /app
+RUN git clone --recursive https://github.com/ggerganov/llama.cpp.git
+
+# Build for CPU
+WORKDIR /app/llama.cpp
+RUN mkdir build && cd build && \
+    cmake .. && \
+    cmake --build . --config Release -j $(nproc)
+
+# Create models directory
+RUN mkdir -p /models
+
+# Set environment
+ENV LLAMA_CPP_BUILD_DIR=/app/llama.cpp/build
+ENV PATH="${LLAMA_CPP_BUILD_DIR}/bin:${PATH}"
+
+# Default command
+CMD ["/app/llama.cpp/build/bin/llama-cli", "--help"]
+</code></pre>
+
+  <h2>🧪 Commands Used</h2>
+  <h3>Build Docker Image</h3>
+  <pre><code>sudo docker build -t llama .</code></pre>
+
+  <h3>Run SmolLM model (with correct volume mount)</h3>
+  <pre><code>sudo docker run --rm -it \
+  -v $(pwd)/models:/models \
+  llama \
+  /app/llama.cpp/build/bin/llama-cli \
+  -m /models/smollm.gguf \
+  -p "Explain the role of etcd in Kubernetes" \
+  -n 128 --threads 2
+</code></pre>
+
+  <h3>Alternative: Interactive Chat Mode</h3>
+  <pre><code>sudo docker run --rm -it \
+  -v $(pwd)/models:/models \
+  llama \
+  /app/llama.cpp/build/bin/llama-cli \
+  -m /models/smollm.gguf \
+  -i
+</code></pre>
+
+  <h2>✅ Current Status</h2>
+  <ul>
+    <li>✔️ Docker image runs successfully on CPU</li>
+    <li>✔️ Models load properly with correct mounting</li>
+    <li>🚫 7B models are too large for your 4 GB VM</li>
+  </ul>
+
+  <h2>➡️ Next Suggestions</h2>
+  <ul>
+    <li>Try smarter models like <code>Phi-2.Q4_K_M.gguf</code> (~1 GB)</li>
+    <li>Add swap or more RAM if you want to retry Mistral</li>
+    <li>Install ROCm and enable AMD GPU acceleration</li>
+    <li>Wrap the container in a Kubernetes pod and expose an inference API</li>
+  </ul>
+</body>
+</html>
