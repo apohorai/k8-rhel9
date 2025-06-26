@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCm Installation on RHEL 9</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1 { color: #333; }
+        h2 { color: #444; margin-top: 20px; }
+        pre { 
+            background: #f4f4f4; 
+            padding: 10px; 
+            border-left: 3px solid #0066cc;
+            overflow-x: auto;
+        }
+        code { font-family: Consolas, monospace; }
+        .note { background: #fff8e1; padding: 10px; border-left: 3px solid #ffc107; }
+    </style>
+</head>
+<body>
+    <h1>ROCm Installation on RHEL 9: Summary</h1>
+    
+    <h2>1. Install Required Dependencies</h2>
+    <pre><code>sudo dnf install -y rpm-build rpmdevtools dnf-plugins-core</code></pre>
+    
+    <h2>2. Set Up ROCm Repository</h2>
+    <p>Add the official ROCm repository for RHEL 9:</p>
+    <pre><code>sudo tee /etc/yum.repos.d/rocm.repo &lt;&lt;EOF
+[ROCm]
+name=ROCm
+baseurl=https://repo.radeon.com/rocm/rhel9/6.1/main
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
+EOF</code></pre>
+    
+    <h2>3. Install ROCm Packages</h2>
+    <pre><code>sudo dnf install -y rocm-opencl-runtime rocm-hip-runtime rocm-smi</code></pre>
+    
+    <h2>4. Verify Installation</h2>
+    <p>Check ROCm components:</p>
+    <pre><code>/opt/rocm/bin/rocminfo
+/opt/rocm/bin/rocm-smi</code></pre>
+    
+    <h2>5. Add User to Video Group (Optional)</h2>
+    <p>For non-root GPU access:</p>
+    <pre><code>sudo usermod -a -G video $USER</code></pre>
+    
+    <h2>Troubleshooting Steps</h2>
+    
+    <h3>GPU Not Detected?</h3>
+    <div class="note">
+        <pre><code># Check loaded kernel modules
+lsmod | grep amdgpu
+
+# Verify GPU compatibility
+lspci -vnn | grep -i amd
+
+# If needed, manually load AMDGPU module
+sudo modprobe amdgpu</code></pre>
+    </div>
+    
+    <h3>Resource Allocation Errors</h3>
+    <p>If you get <code>HSA_STATUS_ERROR_OUT_OF_RESOURCES</code>:</p>
+    <pre><code># Check system resources
+free -h
+nproc
+
+# Reboot to reload drivers
+sudo reboot</code></pre>
+    
+    <h3>Test with HIP Samples</h3>
+    <pre><code>cd /opt/rocm/hip/samples
+make
+./bin/hip-vectoradd  # Test simple vector addition</code></pre>
+    
+    <h2>Final Notes</h2>
+    <p>Key takeaways:</p>
+    <ul>
+        <li>ROCm installation requires specific kernel/driver compatibility</li>
+        <li>The RX 6500 XT (gfx1034) works but may need manual configuration</li>
+        <li>Always verify with <code>rocminfo</code> and <code>rocm-smi</code></li>
+    </ul>
+    <p>For detailed documentation: <a href="https://rocmdocs.amd.com" target="_blank">ROCm Documentation</a></p>
+</body>
+</html>
